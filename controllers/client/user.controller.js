@@ -42,9 +42,8 @@ module.exports.loginPost = async (req, res) => {
         res.redirect("back");
         return;
     }
-
+    // console.log(existUser.tokenUser);
     res.cookie("tokenUser", existUser.tokenUser);
-
     res.redirect("/");
 
 }
@@ -83,4 +82,18 @@ module.exports.registerPost = async (req, res) => {
     await user.save();
     res.cookie("tokenUser", user.tokenUser);
     res.redirect("/user/login");
+}
+
+// [GET] /user/logout
+module.exports.logout = (req, res) => {
+    const tokenUser = res.cookie.tokenUser;
+    res.clearCookie("tokenUser");
+    res.redirect("/user/login")
+}
+
+//[GET] /user/password/forgot
+module.exports.forgot = (req, res) => {
+    res.render("client/pages/user/forgot-password", {
+        pageTitle: "Quên mật khẩu"
+    })
 }
