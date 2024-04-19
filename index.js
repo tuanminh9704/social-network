@@ -8,6 +8,11 @@ const port = process.env.PORT;
 
 const route = require("./routes/client/index.route");
 
+// Connect Database
+const database = require("./configs/database");
+database.connect();
+// End Connect Database
+
 // Set up pug
 app.set('views', './views');
 app.set('view engine', 'pug');

@@ -1,0 +1,37 @@
+extends ../../layouts/user.pug
+
+block main
+  .inner-form-login
+    .container.my-5
+      .row.justify-content-center
+        .col-8
+          h1(class="text-center") Đăng nhập tài khoản
+          form(
+            action="/user/login"
+            method="POST"
+          )
+            div(class="form-group")
+              label(for="email") Email
+              input(
+                type="email"
+                class="form-control inner-email"
+                id="email"
+                name="email"
+                required
+              )
+            div(class="form-group")
+              label(for="password") Mật khẩu
+              input(
+                type="password"
+                class="form-control inner-password"
+                id="password"
+                name="password"
+                required
+              )
+            div(class="form-group")
+              button(
+                type="submit"
+                class="btn btn-primary btn-block"
+              ) Đăng nhập
+            a(href="/user/password/forgot") Quên mật khẩu
+            a(href="/user/register" class="col-6") Đăng ký tài khoản
