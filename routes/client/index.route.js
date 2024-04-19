@@ -3,7 +3,7 @@ const chatRoutes = require("./chat.route");
 const userRoutes = require("./user.route");
 
 module.exports = (app) => {
-    app.use('/home', homeRoutes);
+    app.use('/', homeRoutes);
 
     app.use('/chat', chatRoutes);
 

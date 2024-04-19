@@ -1,6 +1,9 @@
 extends ../../layouts/user.pug
+include ../../mixins/alert.pug
 
 block main
+  +alert-success(5000)
+  +alert-error(5000)
   .inner-form-login
     .container.my-5
       .row.justify-content-center
