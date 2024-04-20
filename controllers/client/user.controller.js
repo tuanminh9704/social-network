@@ -149,6 +149,52 @@ module.exports.submitOtp = (req, res) => {
 }
 
 //[POST] /user/password/otp
-module.exports.submitOtpPost = (req, res) => {
-    res.send("OK");
+module.exports.submitOtpPost = async (req, res) => {
+    const email = req.body.email;
+    const otp = req.body.otp
+    // console.log(email);
+    // console.log(otp);
+    const checkEmail = await ForgotPassword.findOne({
+        email: email,
+        otp: otp
+    })
+
+    const user = await User.findOne({
+        email: email,
+    })
+
+    if(!checkEmail) {
+        req.flash("error", "Mã OTP không chính xác!");
+        res.redirect("back");
+        return;
+    }
+
+    res.cookie("tokenUser", user.tokenUser);
+
+    res.redirect("/user/password/reset");
+
+}
+
+//[GET] /user/password/reset
+module.exports.resetPassword = (req, res) => {
+    res.render("client/pages/user/reset-password", {
+        pageTitle: "Thay đổi mật khẩu"
+    })
+}
+
+//[POST] /user/password/reset
+module.exports.resetPasswordPost = async (req, res) => {
+    const tokenUser = req.cookies.tokenUser;
+    const newPassword = req.body.password;
+    const confirmPasssord = req.body.confirmPassword;
+
+    if(newPassword !== confirmPasssord) {
+        req.flash("error", "Mật khẩu không trùng khớp vui lòng kiểm tra lại!");
+        res.redirect("back");
+        return;
+    }
+
+    await User.updateOne({tokenUser: tokenUser}, {password: md5(newPassword)});
+
+    res.redirect("/");
 }
