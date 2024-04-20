@@ -1,9 +1,10 @@
 const User = require("../../models/user.model");
-const forgotPassword = require("../../models/forgot.model");
+const ForgotPassword = require("../../models/forgot.model");
 const md5 = require("md5");
 
 const genarateHelper = require("../../helpers/genarate");
-const ForgotPassword = require("../../models/forgot.model");
+const sendMailHelper = require("../../helpers/sendMail");
+
 
 //[GET] /user/login
 module.exports.login = (req, res) => {
@@ -126,6 +127,28 @@ module.exports.forgotPost = async (req, res) => {
 
     const forgotPassword = new ForgotPassword(recordsForgotPassword);
 
+    const subject = `Mã xác thực otp`;
+    const html = `Mã xác thực otp của bạn là: <b>${otp}</b>. Yêu cầu không tiết lộ otp để tránh mất tài khoản`;
+
+    sendMailHelper.sendMail(email, subject, html);
+
     await forgotPassword.save();
+
+    res.redirect(`/user/password/otp?email=${email}`);
     
+}
+
+//[GET] /user/password/otp
+module.exports.submitOtp = (req, res) => {
+    const email = req.query.email;
+    // console.log(email);
+    res.render("client/pages/user/otp", {
+        email: email,
+        pageTitle: "Xác thực otp"
+    });
+}
+
+//[POST] /user/password/otp
+module.exports.submitOtpPost = (req, res) => {
+    res.send("OK");
 }
