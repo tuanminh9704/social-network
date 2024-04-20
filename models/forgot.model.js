@@ -14,7 +14,7 @@ const forgotPasswordSchema = new mongoose.Schema({
 });
 
 // Đặt chỉ số TTL cho trường 'expiresAt' (đơn vị là giây)
-forgotPasswordSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 30 });
+forgotPasswordSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 5 });
 
 const ForgotPassword = mongoose.model(
     "ForgotPassword",

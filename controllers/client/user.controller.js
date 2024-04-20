@@ -1,7 +1,9 @@
 const User = require("../../models/user.model");
+const forgotPassword = require("../../models/forgot.model");
 const md5 = require("md5");
 
 const genarateHelper = require("../../helpers/genarate");
+const ForgotPassword = require("../../models/forgot.model");
 
 //[GET] /user/login
 module.exports.login = (req, res) => {
@@ -96,4 +98,34 @@ module.exports.forgot = (req, res) => {
     res.render("client/pages/user/forgot-password", {
         pageTitle: "Quên mật khẩu"
     })
+}
+
+//[POST] /user/password/forgot
+module.exports.forgotPost = async (req, res) => {
+    const email = req.body.email;
+    const existUser = await User.findOne({
+        email: email,
+        deleted: false
+    })
+    
+    if(!existUser) {
+        req.flash("error", "Email không tồn tại!");
+        res.redirect("back");
+        return;
+    }
+
+    const otp = genarateHelper.randomNumber(6);
+
+    // console.log(otp);
+
+    const recordsForgotPassword = {
+        email: email,
+        otp: otp,
+        expiresAt: new Date(Date.now() + 30 * 1000)
+    };
+
+    const forgotPassword = new ForgotPassword(recordsForgotPassword);
+
+    await forgotPassword.save();
+    
 }

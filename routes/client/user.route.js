@@ -16,4 +16,6 @@ router.get('/logout', controller.logout);
 
 router.get('/password/forgot', controller.forgot);
 
+router.post('/password/forgot', controller.forgotPost);
+
 module.exports = router;

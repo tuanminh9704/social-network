@@ -18,6 +18,7 @@
     "flash": "^1.1.0",
     "md5": "^2.3.0",
     "mongoose": "^8.3.2",
+    "nodemailer": "^6.9.13",
     "pug": "^3.0.2"
   },
   "devDependencies": {
