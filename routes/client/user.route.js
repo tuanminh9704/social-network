@@ -16,14 +16,14 @@ router.get('/logout', controller.logout);
 
 router.get('/password/forgot', controller.forgot);
 
-router.post('/password/forgot', controller.forgotPost);
+router.post('/password/forgot', validates.validateForgotPassword, controller.forgotPost);
 
 router.get('/password/otp', controller.submitOtp);
 
-router.post('/password/otp', controller.submitOtpPost);
+router.post('/password/otp', validates.validateOtp, controller.submitOtpPost);
 
 router.get('/password/reset', controller.resetPassword);
 
-router.post('/password/reset', controller.resetPasswordPost);
+router.post('/password/reset',validates.validateResetPassword, controller.resetPasswordPost);
 
 module.exports = router;
