@@ -1,7 +1,7 @@
 // Alert
 const showAlert = document.querySelector("[show-alert]");
 const dataTime = showAlert.getAttribute("data-time");
-console.log(dataTime);
+// console.log(dataTime);
 setTimeout(() => {
     showAlert.classList.add("alert-hidden");
 }, dataTime);

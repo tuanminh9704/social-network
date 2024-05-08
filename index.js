@@ -1,13 +1,26 @@
 const express = require('express');
+const app = express();
 const bodyParser = require("body-parser"); // Để sử dụng req.body
 const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const app = express();
-
 const dotenv = require("dotenv");
+const http = require('http');
+const server = http.createServer(app);
+
+const { Server } = require("socket.io");
+
+// Khởi tạo server HTTP
+
+// Khởi tạo server Socket.IO
+const io = new Server(server);
+global._io = io;
+
+
+// ENV
 dotenv.config();
 
+//PORT
 const port = process.env.PORT;
 
 const route = require("./routes/client/index.route");
@@ -39,6 +52,7 @@ app.use(flash());
 route(app);
 // End route
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`)
-})
+// Khởi động server
+server.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});

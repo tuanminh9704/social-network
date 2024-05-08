@@ -2,7 +2,7 @@ const homeRoutes = require("./home.route");
 const chatRoutes = require("./chat.route");
 const userRoutes = require("./user.route");
 
-const middlewaresAuh = require("../../middlewares/client/auth.middleware");
+const middlewaresAuth = require("../../middlewares/client/auth.middleware");
 const middlewaresLogin = require("../../middlewares/client/login.middleware");
 
 module.exports = (app) => {
@@ -11,8 +11,8 @@ module.exports = (app) => {
 
     app.use('/user',  userRoutes);
 
-    app.use('/', middlewaresAuh.auth, homeRoutes);
+    app.use('/', middlewaresAuth.auth, homeRoutes);
 
-    app.use('/chat', middlewaresAuh.auth, chatRoutes);
+    app.use('/chat', middlewaresAuth.auth, chatRoutes);
 
 }
