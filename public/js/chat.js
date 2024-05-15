@@ -72,3 +72,19 @@ emojiPicker.addEventListener('emoji-click', event => {
 });
 
 // End Emoji
+
+
+// Click icon image
+
+const buttonImageIcon = document.querySelector(".chat .button-icon-image");
+const inputImage = document.querySelector("[upload-image-input]");
+
+// console.log(buttonImageIcon);
+// console.log(inputImage);
+
+buttonImageIcon.addEventListener("click", () => {
+  inputImage.click();
+})
+
+
+// End Click icon image

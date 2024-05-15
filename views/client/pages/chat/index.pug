@@ -28,6 +28,21 @@ block main
                 placeholder="Nhập nội dung..."
                 name="content"
               )
+              span(class="button-icon-image")
+                i.fa-regular.fa-image
+                  input(
+                    type="file"
+                    class="form-control-file d-none"
+                    id="thumbnail"
+                    name="thumbnail"
+                    accept="image/*"
+                    upload-image-input
+                  )
+                  img(
+                    src=""
+                    class="image-preview"
+                    upload-image-preview
+                  )
               span(class="button-icon")
                 i.fa-regular.fa-face-smile
               button

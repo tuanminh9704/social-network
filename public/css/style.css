@@ -179,6 +179,12 @@
 
 .chat .button-icon {
   cursor: pointer;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.chat .button-icon i {
+  font-size: 25px;
 }
 
 .chat {
@@ -190,6 +196,15 @@
   right: 65px;
   bottom: 45px;
   /* display: none; */
+}
+
+.chat .button-icon-image {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.chat .button-icon-image i {
+  font-size: 25px;
 }
 
 /* End chat */
