@@ -1,3 +1,8 @@
+const upload = new FileUploadWithPreview.FileUploadWithPreview('upload-images', {
+  multiple: true,
+  maxFileCount: 6
+});
+
 // CLIENT_SEND_MESSAGE
 const formSendData = document.querySelector(".chat .inner-form");
 if(formSendData) {
@@ -5,9 +10,15 @@ if(formSendData) {
   formSendData.addEventListener("submit", (event) => {
     event.preventDefault();
     const content = inputContent.value;
-    if(content) {
-      socket.emit("CLIENT_SEND_MESSAGE", content);
+    const images = upload.cachedFileArray || [];
+    console.log(images);
+    if(content || images.length > 0) {
+      socket.emit("CLIENT_SEND_MESSAGE", {
+        content: content,
+        images: images
+      });
       inputContent.value = "";
+      upload.resetPreviewPanel();
     }
   });
 }
@@ -73,18 +84,3 @@ emojiPicker.addEventListener('emoji-click', event => {
 
 // End Emoji
 
-
-// Click icon image
-
-const buttonImageIcon = document.querySelector(".chat .button-icon-image");
-const inputImage = document.querySelector("[upload-image-input]");
-
-// console.log(buttonImageIcon);
-// console.log(inputImage);
-
-buttonImageIcon.addEventListener("click", () => {
-  inputImage.click();
-})
-
-
-// End Click icon image
