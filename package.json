@@ -12,6 +12,7 @@
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
+    "emoji-picker-element": "^1.21.3",
     "express": "^4.19.2",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.0",

@@ -176,4 +176,21 @@
   padding: 0 10px;
   cursor: pointer;
 }
+
+.chat .button-icon {
+  cursor: pointer;
+}
+
+.chat {
+  position: relative;
+}
+
+.emoji {
+  position: absolute;
+  right: 65px;
+  bottom: 45px;
+  /* display: none; */
+}
+
 /* End chat */
+

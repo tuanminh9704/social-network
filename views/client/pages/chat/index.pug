@@ -7,8 +7,8 @@ block main
       .col-12
         .chat(my-id=user.id)
           .inner-head
-            .inner-avatar EY
-            .inner-name Em Yêu
+            .inner-avatar TM
+            .inner-name Tuan Minh
           .inner-body
             each chat in chats
               div(
@@ -28,5 +28,8 @@ block main
                 placeholder="Nhập nội dung..."
                 name="content"
               )
+              span(class="button-icon")
+                i.fa-regular.fa-face-smile
               button
                 i.fa-solid.fa-paper-plane
+        emoji-picker(class="emoji d-none")
