@@ -16,8 +16,13 @@ block main
               )
                 if(chat.user_id != user.id)
                   .inner-name #{chat.infoUser.fullName}
-                .inner-content 
-                  | #{chat.content}
+                if(chat.content)
+                  .inner-content 
+                    | #{chat.content}
+                if(chat.images)
+                  .inner-images
+                    each image in chat.images
+                      img(src=image)
           .inner-preview-images
             div(
               class="custom-file-container"

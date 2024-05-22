@@ -1,6 +1,6 @@
 const upload = new FileUploadWithPreview.FileUploadWithPreview('upload-images', {
-  multiple: true,
-  maxFileCount: 6
+  multiple: true, 
+  maxFileCount: 6 // số  ảnh tôi đa khi gửi đi
 });
 
 // CLIENT_SEND_MESSAGE
@@ -11,7 +11,7 @@ if(formSendData) {
     event.preventDefault();
     const content = inputContent.value;
     const images = upload.cachedFileArray || [];
-    console.log(images);
+    // console.log(images);
     if(content || images.length > 0) {
       socket.emit("CLIENT_SEND_MESSAGE", {
         content: content,
@@ -28,21 +28,38 @@ if(formSendData) {
 socket.on("SERVER_SEND_MESSAGE", (data) => {
   const body = document.querySelector(".chat .inner-body");
   const myId = document.querySelector("[my-id]").getAttribute("my-id");
+  // console.log(myId);
 
   const div = document.createElement("div");
   let htmlFullName = "";
+  let htmlImage = "";
+  let htmlContent = "";
+  if(data.content){
+    htmlContent += `<div class="inner-content">${data.content}</div>`;
+  }
+  console.log(data.images);
+  if(data.images.length > 0){
+    htmlImage += `<div class="inner-images">`
+    for (const image of data.images) {
+      // console.log(image);
+      htmlImage += `<img src="${image}">` 
+    }
+    htmlImage += "</div>"
+  }
 
-  if(myId != data.userId) {
+  if(myId != data.userId) { 
     div.classList.add("inner-incoming");
     htmlFullName = `<div class="inner-name">${data.fullName}</div>`;
   } else {
     div.classList.add("inner-outgoing");
   }
-
   div.innerHTML = `
     ${htmlFullName}
-    <div class="inner-content">${data.content}</div>
+    ${htmlContent}
+    ${htmlImage}
   `;
+
+  console.log(div);
 
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
