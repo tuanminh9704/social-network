@@ -17,7 +17,12 @@ block main
                 div(class="inner-buttons")
                   button(
                     class="button-requests btn btn-sm btn-primary mr-1"
+                    button-add-friend=user.id
                   ) Thêm bạn bè
                   button(
-                    class="button-cancel btn btn-sm btn-secondary mr-1"
+                    class="button-requests-cancelbtn btn-sm btn-secondary mr-1 d-none"
+                  ) Hủy lời mời
+                  button(
+                    class="button-delete btn btn-sm btn-secondary mr-1"
                   ) Xóa
+

@@ -8,6 +8,18 @@ module.exports.index = (req, res) => {
 
 module.exports.suggestions = async (req, res) => {
     const userId = res.locals.user.id;
+    _io.once("connection", (socket)  => {
+        socket.on("CLIENT_ADD_FRIEND", async (data) => {
+            const users = await User.findOne({
+                _id: userId
+            })
+
+            // console.log(users);
+            await users.updateOne({
+                $push: {requestFriend: data}
+            })
+        })
+    })
     const users = await User.find({
         _id: {$ne: userId}
     }).select("fullName avatar");
