@@ -25,7 +25,7 @@ module.exports.index = async (req, res) => {
           images: images
         });
         await chat.save();
-        console.log(images);
+        // console.log(images);
         _io.emit("SERVER_SEND_MESSAGE", {
           userId: userId,
           fullName: fullName,

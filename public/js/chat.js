@@ -59,7 +59,7 @@ socket.on("SERVER_SEND_MESSAGE", (data) => {
     ${htmlImage}
   `;
 
-  console.log(div);
+  // console.log(div);
 
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
