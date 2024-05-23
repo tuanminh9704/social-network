@@ -298,5 +298,17 @@
 }
 
 
+.box-user [button-cancel] {
+  display: none;
+}
+
+.box-user.add [button-add-friend] {
+  display: none;
+}
+
+.box-user.add [button-cancel] {
+  display: inline-block;
+}
+
 /* End Button friend */
 

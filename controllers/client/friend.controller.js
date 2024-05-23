@@ -10,13 +10,15 @@ module.exports.suggestions = async (req, res) => {
     const userId = res.locals.user.id;
     _io.once("connection", (socket)  => {
         socket.on("CLIENT_ADD_FRIEND", async (data) => {
+            // Người dùng gửi yêu cầu
             const usersRequest = await User.findOne({
                 _id: userId
             })
+            // Người khác đưọc nhận yêu cầu đấy
             const usersAccept = await User.findOne({
                 _id: data
             })
-            // console.log(usersAccept);
+            console.log(usersAccept);
             await usersRequest.updateOne({
                 $push: {requestFriend: data}
             })
