@@ -8,6 +8,8 @@ module.exports.index = (req, res) => {
 
 module.exports.suggestions = async (req, res) => {
     const userId = res.locals.user.id;
+    const requestFriends = res.locals.user.requestFriend;
+    const acceptFriends = res.locals.user.acceptFriend;
     _io.once("connection", (socket)  => {
         socket.on("CLIENT_ADD_FRIEND", async (data) => {
             // Người dùng gửi yêu cầu
@@ -18,7 +20,7 @@ module.exports.suggestions = async (req, res) => {
             const usersAccept = await User.findOne({
                 _id: data
             })
-            console.log(usersAccept);
+            // console.log(usersAccept);
             await usersRequest.updateOne({
                 $push: {requestFriend: data}
             })
@@ -28,7 +30,13 @@ module.exports.suggestions = async (req, res) => {
         })
     })
     const users = await User.find({
-        _id: {$ne: userId}
+        // _id: {$ne: userId}
+        $and: [
+            {_id: {$ne: userId}},
+            {_id: {$nin: requestFriends}}, 
+            {_id: {$nin: acceptFriends}} 
+          ],
+
     }).select("fullName avatar");
 
     // console.log(users);
