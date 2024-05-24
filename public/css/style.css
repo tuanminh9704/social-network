@@ -316,9 +316,9 @@
   position: relative;
 }
 
-.button-friend .add[request-friend-notification] {
+/* .button-friend .add[request-friend-notification] {
   display: inline-block;
-}
+} */
 
 .request-friend-notification {
   display: none;

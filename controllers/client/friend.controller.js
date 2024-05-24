@@ -22,6 +22,7 @@ module.exports.suggestions = async (req, res) => {
             const usersAccept = await User.findOne({
                 _id: data
             })
+            // socket.emit("SERVER_RETURN_ADD_FRIEND", (data));
             // console.log(usersAccept);
             await usersRequest.updateOne({
                 $push: {requestFriend: data}
@@ -66,6 +67,7 @@ module.exports.accepts = async (req, res) => {
     // console.log(users);
     res.render("client/pages/friends/accept-friend", {
         users: users,
+        // arrayAcceptFriends: arrayAcceptFriends,
         pageTitle: "Lời mời kết bạn"
     })
 }

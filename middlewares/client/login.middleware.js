@@ -13,6 +13,9 @@ module.exports.loginPost = async (req, res, next) => {
 
     if(user){
         res.locals.user = user;
+        _io.once("connection", (socket) => {
+            socket.emit("SERVER_SEND_USER", user)
+        });
     }
 
     next();
