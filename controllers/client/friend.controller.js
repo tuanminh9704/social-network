@@ -63,7 +63,7 @@ module.exports.accepts = async (req, res) => {
         _id: {$in: arrayAcceptFriends}
     })
 
-    console.log(users);
+    // console.log(users);
     res.render("client/pages/friends/accept-friend", {
         users: users,
         pageTitle: "Lời mời kết bạn"

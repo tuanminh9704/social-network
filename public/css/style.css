@@ -310,5 +310,28 @@
   display: inline-block;
 }
 
+/* Thông báo */
+
+.button-friend {
+  position: relative;
+}
+
+.button-friend .add[request-friend-notification] {
+  display: inline-block;
+}
+
+.request-friend-notification {
+  display: none;
+  position: absolute;
+  background-color: red;
+  width: 10px;
+  height: 10px;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+}
+
+/* End Thông báo */
+
 /* End Button friend */
 
