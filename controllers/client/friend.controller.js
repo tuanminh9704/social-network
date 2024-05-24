@@ -1,11 +1,13 @@
 const User = require("../../models/user.model");
 
+//[GET] /friend
 module.exports.index = (req, res) => {
     res.render("client/pages/friends/index", {
         pageTitle: "Bạn bè"
     });
 }
 
+//[GET] /friends/suggestions
 module.exports.suggestions = async (req, res) => {
     const userId = res.locals.user.id;
     const requestFriends = res.locals.user.requestFriend;
@@ -44,5 +46,26 @@ module.exports.suggestions = async (req, res) => {
     res.render("client/pages/friends/suggestions", {
         pageTitle: "Gợi ý kết bạn",
         users: users
+    })
+}
+
+//[GET] /friends/accepts
+module.exports.accepts = async (req, res) => {
+    const userId = res.locals.user.id;
+    // console.log(userId);
+    const myUser = await User.findOne({
+        _id: userId,
+    })
+
+    const arrayAcceptFriends = myUser.acceptFriend;
+
+    const users = await User.find({
+        _id: {$in: arrayAcceptFriends}
+    })
+
+    console.log(users);
+    res.render("client/pages/friends/accept-friend", {
+        users: users,
+        pageTitle: "Lời mời kết bạn"
     })
 }

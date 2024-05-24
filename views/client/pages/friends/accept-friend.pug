@@ -5,7 +5,7 @@ block main
 
   .container.my-3
     include ../../partials/friend.pug  
-    h1 Gợi ý kết bạn
+    h1 Lời mời kết bạn
     .row 
       if (users.length > 0)
         each user in users
@@ -17,13 +17,9 @@ block main
                 div(class="inner-fullname") #{user.fullName}
                 div(class="inner-buttons")
                   button(
-                    class="button-add button-requests btn btn-sm btn-primary mr-1"
-                    button-add-friend=user.id
-                  ) Thêm bạn bè
-                  button(
-                    class="button-requests-cancel btn btn-sm btn-secondary mr-1"
-                    button-cancel=user.id
-                  ) Hủy lời mời
+                    class="button-accept btn btn-sm btn-primary mr-1"
+                    button-accept-friend=user.id
+                  ) Xác nhận
                   button(
                     class="button-add button-delete btn btn-sm btn-secondary mr-1"
                     button-add-friend=user.id
