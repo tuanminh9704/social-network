@@ -79,7 +79,7 @@ module.exports.registerPost = async (req, res) => {
         tokenUser: tokenUser,
     }
 
-    console.log(infoUser);
+    // console.log(infoUser);
     const user = new User(infoUser);
 
     await user.save();

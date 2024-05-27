@@ -12,6 +12,8 @@ module.exports.suggestions = async (req, res) => {
     const userId = res.locals.user.id;
     const requestFriends = res.locals.user.requestFriend;
     const acceptFriends = res.locals.user.acceptFriend;
+
+    // Socket
     _io.once("connection", (socket)  => {
         socket.on("CLIENT_ADD_FRIEND", async (data) => {
             // Người dùng gửi yêu cầu
@@ -35,6 +37,7 @@ module.exports.suggestions = async (req, res) => {
             })
         })
     })
+    // End Socket 
     const users = await User.find({
         // _id: {$ne: userId}
         $and: [
@@ -56,10 +59,28 @@ module.exports.suggestions = async (req, res) => {
 //[GET] /friends/accepts
 module.exports.accepts = async (req, res) => {
     const userId = res.locals.user.id;
+
     // console.log(userId);
     const myUser = await User.findOne({
         _id: userId,
     })
+
+    // Socket
+    _io.on("connection", (socket) => {
+        socket.on("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", async (data) => {
+            console.log(myUser);
+            await myUser.updateOne({
+                $pull: {acceptFriend: data},
+            })
+            const user = await User.findOne({
+                _id: data
+            })
+            await user.updateOne({
+                $pull: {requestFriend: userId},
+            })
+        })
+    })
+    // End Socket
 
     const arrayAcceptFriends = myUser.acceptFriend;
 

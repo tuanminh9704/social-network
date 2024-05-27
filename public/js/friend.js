@@ -17,6 +17,8 @@ if(buttonAddFriend.length > 0){
 
 // End Button add friend
 
+// Notification
+
 // console.log(user);
 socket.on("SERVER_SEND_USER", (data) => {
     // console.log(data.acceptFriend);
@@ -33,11 +35,11 @@ const notification = document.querySelector("[request-friend-notification]");
 const myId = document.querySelector("[my-id]").getAttribute("my-id");
 
 // console.log(notification);
-console.log(myId);
+// console.log(myId);
 socket.on("SERVER_RETURN_ADD_FRIEND", (data) => {
     // const userID = res.locals.user.id;
     // console.log(userID);
-    console.log(data.userId);
+    // console.log(data.userId);
     if(myId == data.userId){
         console.log("OK");
         notification.style.display = 'inline-block';
@@ -45,8 +47,28 @@ socket.on("SERVER_RETURN_ADD_FRIEND", (data) => {
 
 })
 
-// Notification
-
-
-
 // End Notification
+
+
+// Button Accept Friend 
+
+const buttonAcceptFriend = document.querySelectorAll("[button-accept-friend]");
+
+
+// console.log(buttonAcceptFriend);
+buttonAcceptFriend.forEach(button => {
+    button.addEventListener("click", () => {
+        const userId = button.getAttribute("button-accept-friend");
+        // console.log(userId);
+        const innerButton = button.closest(".inner-buttons");
+        const buttonAcceptSuccess = innerButton.querySelector(".button-accept-success");
+        const buttonDelete = innerButton.querySelector(".button-delete");
+        button.classList.add("d-none");
+        buttonDelete.classList.add("d-none");
+        buttonAcceptSuccess.classList.remove("d-none");
+        socket.emit("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", userId);
+
+    })
+})
+
+// End Button Accept Friend
