@@ -66,9 +66,10 @@ module.exports.accepts = async (req, res) => {
     })
 
     // Socket
+    // Chấp nhận lời mời kết bạn
     _io.on("connection", (socket) => {
         socket.on("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", async (data) => {
-            console.log(myUser);
+            // console.log(myUser);
             await myUser.updateOne({
                 $pull: {acceptFriend: data},
             })
@@ -80,6 +81,26 @@ module.exports.accepts = async (req, res) => {
             })
         })
     })
+    
+    // End chấp nhận lời mời kết bạn
+
+    // Không chấp nhận yêu cầu
+    _io.on("connection", (socket) => {
+        socket.on("CLIENT_SEND_ID_REFUSE_TO_SERVER", async (data) => {
+            // console.log(myUser);
+            await myUser.updateOne({
+                $pull: {acceptFriend: data},
+            })
+            const user = await User.findOne({
+                _id: data
+            })
+            await user.updateOne({
+                $pull: {requestFriend: userId},
+            })
+        })
+    })
+
+    // End không chấp nhận yêu cầu
     // End Socket
 
     const arrayAcceptFriends = myUser.acceptFriend;

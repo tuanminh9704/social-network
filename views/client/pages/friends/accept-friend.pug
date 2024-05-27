@@ -22,9 +22,14 @@ block main
                   ) Xác nhận
                   button(
                     class="button-accept-success btn btn-sm btn-secondary mr-1 d-none"
+                    button-accept-success
                   ) Xác nhận lời mời kết bạn
                   button(
-                    class="button-add button-delete btn btn-sm btn-secondary mr-1"
-                    button-add-friend=user.id
+                    class="button-add button-refuse btn btn-sm btn-secondary mr-1"
+                    button-refuse-friend=user.id
                   ) Xóa
+                  button(
+                    class="button-refused btn btn-sm btn-secondary mr-1 d-none"
+                    button-refused
+                  ) Đã xóa yêu cầu
 

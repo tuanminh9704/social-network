@@ -72,3 +72,23 @@ buttonAcceptFriend.forEach(button => {
 })
 
 // End Button Accept Friend
+
+const buttonRefuse = document.querySelectorAll("[button-refuse-friend]");
+// console.log(buttonRefuse);
+
+if(buttonRefuse.length > 0){
+    buttonRefuse.forEach(button => {
+        button.addEventListener("click", () => {
+            const userIdB = button.getAttribute("button-refuse-friend");
+            // console.log(userIdB);
+            const innerButton = button.closest(".inner-buttons");
+            const buttonAccept = innerButton.querySelector(".button-accept");
+            const buttonRefused = innerButton.querySelector(".button-refused");
+            buttonAccept.classList.add("d-none");
+            buttonRefused.classList.remove("d-none");
+            button.classList.add("d-none");
+            socket.emit("CLIENT_SEND_ID_REFUSE_TO_SERVER", userIdB);
+        })
+    })
+}
+// End button refuse
