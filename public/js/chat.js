@@ -26,6 +26,7 @@ if(formSendData) {
 
 // SERVER_SEND_MESSAGE
 socket.on("SERVER_SEND_MESSAGE", (data) => {
+  console.log(data);
   const body = document.querySelector(".chat .inner-body");
   const myId = document.querySelector("[my-id]").getAttribute("my-id");
   // console.log(myId);

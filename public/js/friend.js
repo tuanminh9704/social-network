@@ -23,9 +23,26 @@ socket.on("SERVER_SEND_USER", (data) => {
     const arrayAcceptFriends = data.acceptFriend;
     if(arrayAcceptFriends.length > 0){
         const notification = document.querySelector("[request-friend-notification]");
-        console.log(notification);
+        // console.log(notification);
         notification.style.display = 'inline-block';
     }
+})
+
+// Hiển thị thông báo real time
+const notification = document.querySelector("[request-friend-notification]");
+const myId = document.querySelector("[my-id]").getAttribute("my-id");
+
+// console.log(notification);
+console.log(myId);
+socket.on("SERVER_RETURN_ADD_FRIEND", (data) => {
+    // const userID = res.locals.user.id;
+    // console.log(userID);
+    console.log(data.userId);
+    if(myId == data.userId){
+        console.log("OK");
+        notification.style.display = 'inline-block';
+    }
+
 })
 
 // Notification

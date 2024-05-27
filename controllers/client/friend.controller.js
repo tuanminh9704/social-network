@@ -22,7 +22,10 @@ module.exports.suggestions = async (req, res) => {
             const usersAccept = await User.findOne({
                 _id: data
             })
-            // socket.emit("SERVER_RETURN_ADD_FRIEND", (data));
+            // server trả về id cho người đươcj nhận lời mời kết bạn
+            _io.emit("SERVER_RETURN_ADD_FRIEND", {
+                userId: data
+            });
             // console.log(usersAccept);
             await usersRequest.updateOne({
                 $push: {requestFriend: data}

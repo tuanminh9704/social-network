@@ -10,7 +10,7 @@ block main
       if (users.length > 0)
         each user in users
           .col-2
-            div(class="box-user")
+            div(class="box-user" my-id=user.id)
               div(class="inner-avatar")
                 img(src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg", alt="")
               div(class="inner-info")
