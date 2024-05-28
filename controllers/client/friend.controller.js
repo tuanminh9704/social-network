@@ -43,12 +43,13 @@ module.exports.suggestions = async (req, res) => {
         $and: [
             {_id: {$ne: userId}},
             {_id: {$nin: requestFriends}}, 
-            {_id: {$nin: acceptFriends}} 
+            {_id: {$nin: acceptFriends}},
+            {'friendList.user_id': {$nin: [userId]}}
           ],
 
     }).select("fullName avatar");
 
-    // console.log(users);
+    console.log(users.friendList);
     // console.log(userId);
     res.render("client/pages/friends/suggestions", {
         pageTitle: "Gợi ý kết bạn",
@@ -70,14 +71,27 @@ module.exports.accepts = async (req, res) => {
     _io.on("connection", (socket) => {
         socket.on("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", async (data) => {
             // console.log(myUser);
+            // console.log(data);
             await myUser.updateOne({
                 $pull: {acceptFriend: data},
+                $push: {
+                    friendList: {
+                        user_id: data,
+                        room_chat_id: ""
+                    }
+                }
             })
             const user = await User.findOne({
                 _id: data
             })
             await user.updateOne({
                 $pull: {requestFriend: userId},
+                $push: {
+                    friendList: {
+                        user_id: userId,
+                        room_chat_id: ""
+                    }
+                }
             })
         })
     })
@@ -86,10 +100,10 @@ module.exports.accepts = async (req, res) => {
 
     // Không chấp nhận yêu cầu
     _io.on("connection", (socket) => {
-        socket.on("CLIENT_SEND_ID_REFUSE_TO_SERVER", async (data) => {
+        socket.on("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", async (data) => {
             // console.log(myUser);
             await myUser.updateOne({
-                $pull: {acceptFriend: data},
+                $pull: {acceptFriend: data}
             })
             const user = await User.findOne({
                 _id: data

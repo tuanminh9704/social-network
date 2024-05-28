@@ -53,8 +53,6 @@ socket.on("SERVER_RETURN_ADD_FRIEND", (data) => {
 // Button Accept Friend 
 
 const buttonAcceptFriend = document.querySelectorAll("[button-accept-friend]");
-
-
 // console.log(buttonAcceptFriend);
 buttonAcceptFriend.forEach(button => {
     button.addEventListener("click", () => {
@@ -62,7 +60,7 @@ buttonAcceptFriend.forEach(button => {
         // console.log(userId);
         const innerButton = button.closest(".inner-buttons");
         const buttonAcceptSuccess = innerButton.querySelector(".button-accept-success");
-        const buttonDelete = innerButton.querySelector(".button-delete");
+        const buttonDelete = innerButton.querySelector(".button-refuse");
         button.classList.add("d-none");
         buttonDelete.classList.add("d-none");
         buttonAcceptSuccess.classList.remove("d-none");
@@ -75,7 +73,6 @@ buttonAcceptFriend.forEach(button => {
 
 const buttonRefuse = document.querySelectorAll("[button-refuse-friend]");
 // console.log(buttonRefuse);
-
 if(buttonRefuse.length > 0){
     buttonRefuse.forEach(button => {
         button.addEventListener("click", () => {
