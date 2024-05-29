@@ -30,6 +30,7 @@ socket.on("SERVER_SEND_USER", (data) => {
     }
 })
 
+
 // Hiển thị thông báo real time
 const notification = document.querySelector("[request-friend-notification]");
 const myId = document.querySelector("[my-id]").getAttribute("my-id");
@@ -41,7 +42,7 @@ socket.on("SERVER_RETURN_ADD_FRIEND", (data) => {
     // console.log(userID);
     // console.log(data.userId);
     if(myId == data.userId){
-        console.log("OK");
+        // console.log("OK");
         notification.style.display = 'inline-block';
     }
 
@@ -89,3 +90,32 @@ if(buttonRefuse.length > 0){
     })
 }
 // End button refuse
+
+// Button dots(button dâu ba chấm)
+
+const buttonDots = document.querySelectorAll("[userId]");
+
+if(buttonDots.length > 0){
+    buttonDots.forEach(button => {
+        button.addEventListener("click", () => {
+            const id = button.getAttribute("userId");
+            const boxUser = button.closest(".box-user");
+            // console.log(boxUser);
+            const listOperation = boxUser.querySelector(".list-operation ul");
+            if(listOperation.classList == "d-none"){
+                listOperation.classList.remove("d-none");
+            }
+            else{
+                listOperation.classList.add("d-none");
+            }
+            const buttonRefuse = listOperation.querySelector(".refuse-friend");
+            // console.log(buttonRefuse);
+            buttonRefuse.addEventListener("click", () => {
+                console.log(id);
+            })
+
+        })
+    })
+}
+
+// End Button dots

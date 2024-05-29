@@ -48,8 +48,6 @@ module.exports.suggestions = async (req, res) => {
           ],
 
     }).select("fullName avatar");
-
-    console.log(users.friendList);
     // console.log(userId);
     res.render("client/pages/friends/suggestions", {
         pageTitle: "Gợi ý kết bạn",
@@ -128,5 +126,30 @@ module.exports.accepts = async (req, res) => {
         users: users,
         // arrayAcceptFriends: arrayAcceptFriends,
         pageTitle: "Lời mời kết bạn"
+    })
+}
+
+//[GET] /friend/lists
+module.exports.friendList = async (req, res) => {
+    const userId = res.locals.user.id;
+    const myUser = await User.findOne({
+        _id: userId,
+    })
+    const arrayFriendList = myUser.friendList; // danh sách bạn bè 
+    const arrayIdFriendList = arrayFriendList.map(item => item.user_id); // danh sách id bạn bè
+
+    const users = [];
+    // console.log(arrayIdFriendList);
+    for (const id of arrayIdFriendList) {
+        const user = await User.findOne({
+            _id: id
+        })
+        users.push(user);
+    }
+
+    // console.log(users);
+    res.render("client/pages/friends/friend-list", {
+        users: users,
+        pageTitle: "Danh sách bạn bè"
     })
 }

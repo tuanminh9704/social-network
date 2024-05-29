@@ -260,6 +260,7 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  position: relative;
 }
 
 .box-user .inner-avatar {
@@ -332,6 +333,30 @@
 }
 
 /* End Thông báo */
+
+
+/* Dots(Dấu 3 chấm)*/
+
+.dots {
+  position: absolute;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  cursor: pointer;
+}
+
+.list-operation ul {
+  position: absolute;
+  background-color: #ffff;
+  list-style: none;
+}
+
+.list-operation ul li button{
+  border: 0;
+  background-color: #ffff;
+}
+
+/* End Dots (Dấu 3 chấm)*/
 
 /* End Button friend */
 

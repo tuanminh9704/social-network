@@ -9,4 +9,6 @@ router.get("/suggestions", controller.suggestions);
 
 router.get("/accepts", controller.accepts);
 
+router.get("/lists", controller.friendList);
+
 module.exports = router;
