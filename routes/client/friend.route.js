@@ -11,4 +11,6 @@ router.get("/accepts", controller.accepts);
 
 router.get("/lists", controller.friendList);
 
+router.get("/requests", controller.friendRequest);
+
 module.exports = router;

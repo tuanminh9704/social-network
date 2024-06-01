@@ -160,3 +160,27 @@ module.exports.friendList = async (req, res) => {
         pageTitle: "Danh sách bạn bè"
     })
 }
+
+//[GET] /friend/requests
+module.exports.friendRequest = async (req, res) => {
+    const myId = res.locals.user.id;
+    // console.log(myId);
+    const myUser = await User.findOne({
+        _id: myId
+    })
+
+    const arrFriendRequestsId = myUser.requestFriend;
+    const users = [];
+
+    for (const id of arrFriendRequestsId) {
+        const user = await User.findOne({
+            _id: id
+        })
+        users.push(user);
+    }
+
+    res.render("client/pages/friends/request-friend", {
+        pageTitle: "Lời mời kết bạn đã gửi",
+        users: users
+    })
+}
