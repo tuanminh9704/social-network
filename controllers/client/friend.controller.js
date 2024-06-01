@@ -1,4 +1,5 @@
 const User = require("../../models/user.model");
+const RoomChat = require("../../models/room-chats.model");
 
 //[GET] /friend
 module.exports.index = (req, res) => {
@@ -70,12 +71,28 @@ module.exports.accepts = async (req, res) => {
         socket.on("CLIENT_SEND_ID_ACCEPT_FRIEND_TO_SERVER", async (data) => {
             // console.log(myUser);
             // console.log(data);
+            const roomChat = new RoomChat({
+                typeRoom: "friend",
+                users: [
+                  {
+                    user_id: userId,
+                    role: "superAdmin"
+                  },
+                  {
+                    user_id: data,
+                    role: "superAdmin"
+                  }
+                ],
+              });
+
+            await roomChat.save();
+
             await myUser.updateOne({
                 $pull: {acceptFriend: data},
                 $push: {
                     friendList: {
                         user_id: data,
-                        room_chat_id: ""
+                        room_chat_id: roomChat.id
                     }
                 }
             })
@@ -87,7 +104,7 @@ module.exports.accepts = async (req, res) => {
                 $push: {
                     friendList: {
                         user_id: userId,
-                        room_chat_id: ""
+                        room_chat_id: roomChat.id
                     }
                 }
             })
