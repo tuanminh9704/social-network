@@ -146,6 +146,13 @@ module.exports.friendList = async (req, res) => {
         })
         users.push(user);
     }
+    _io.on("connection", (socket) => {
+        socket.on("CLIENT_SEND_ID_REFUSE_TO_SERVER", async (data) => {
+            await myUser.updateOne({
+                $pull: {friendList: {user_id: data}}
+            })
+        })
+    })
 
     // console.log(users);
     res.render("client/pages/friends/friend-list", {

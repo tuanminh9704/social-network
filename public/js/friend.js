@@ -94,11 +94,12 @@ if(buttonRefuse.length > 0){
 // Button dots(button dâu ba chấm)
 
 const buttonDots = document.querySelectorAll("[userId]");
+const innerButton = document.querySelector(".inner-buttons");
 
 if(buttonDots.length > 0){
     buttonDots.forEach(button => {
         button.addEventListener("click", () => {
-            const id = button.getAttribute("userId");
+            const userIdB = button.getAttribute("userId");
             const boxUser = button.closest(".box-user");
             // console.log(boxUser);
             const listOperation = boxUser.querySelector(".list-operation ul");
@@ -111,7 +112,12 @@ if(buttonDots.length > 0){
             const buttonRefuse = listOperation.querySelector(".refuse-friend");
             // console.log(buttonRefuse);
             buttonRefuse.addEventListener("click", () => {
-                console.log(id);
+                socket.emit("CLIENT_SEND_ID_REFUSE_TO_SERVER", userIdB);
+                const buttonFriend = innerButton.querySelector(".btn-friend");
+                const buttonUnfriend = innerButton.querySelector(".btn-unfriend");
+                buttonFriend.classList.add("d-none");
+                buttonUnfriend.classList.remove('d-none');
+                listOperation.classList.add("d-none");
             })
 
         })

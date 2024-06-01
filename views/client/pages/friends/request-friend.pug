@@ -5,7 +5,7 @@ block main
 
   .container.my-3
     include ../../partials/friend.pug  
-    h1 Danh sách bạn bè
+    h1 Lời mời đã gửi
     .row 
       if (users.length > 0)
         each user in users
@@ -25,11 +25,6 @@ block main
                 div(class="inner-fullname") #{user.fullName}
                 div(class="inner-buttons")
                   span(
-                    class="btn btn-sm btn-secondary mr-1 btn-friend"
-                  ) Bạn bè
-                  span(
-                    class="btn btn-sm btn-secondary mr-1 btn-unfriend d-none"
-                  ) Đã hủy kết bạn
-      else 
-        h2 Bạn chưa có bạn bè 
+                    class="btn btn-sm btn-secondary mr-1 btn-refuse-request"
+                  ) Hủy lời mời
 
