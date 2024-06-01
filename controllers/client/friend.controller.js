@@ -179,6 +179,14 @@ module.exports.friendRequest = async (req, res) => {
         users.push(user);
     }
 
+    _io.on("connection", (socket) => {
+        socket.on("CLIENT_SEND_ID_REFUSE_REQUEST_TO_SERVER", async (data) => {
+            await myUser.updateOne({
+                $pull: {requestFriend: data}
+            })
+        })
+    })
+
     res.render("client/pages/friends/request-friend", {
         pageTitle: "Lời mời kết bạn đã gửi",
         users: users

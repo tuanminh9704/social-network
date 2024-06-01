@@ -125,3 +125,27 @@ if(buttonDots.length > 0){
 }
 
 // End Button dots
+
+
+// Button refuse requests
+
+const buttonRequestRefuse = document.querySelectorAll(".btn-refuse-request");
+
+// console.log(buttonRequestRefuse);
+if(buttonRequestRefuse.length > 0){
+    const buttonRefused = document.querySelector(".btn-refused");
+    buttonRequestRefuse.forEach(button => {
+        button.addEventListener("click", () => {
+            const userId = button.getAttribute("userId");
+            const confirmRefuse = confirm("Xác nhận hủy lời mời");
+            if(confirmRefuse) {
+                socket.emit("CLIENT_SEND_ID_REFUSE_REQUEST_TO_SERVER", userId);
+                buttonRefused.classList.remove("d-none");
+                button.classList.add("d-none");
+            }
+        })
+    })
+} 
+
+
+// End button refuse request
