@@ -261,6 +261,7 @@
   display: block;
   font-weight: 600;
   font-size: 18px;
+  color: #000;
   border-bottom: 2px solid #dddd;
   cursor: pointer;
 }

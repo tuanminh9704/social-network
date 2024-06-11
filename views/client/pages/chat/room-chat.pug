@@ -1,0 +1,10 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    .row
+      .col-2
+        .inner-list-chat 
+          each user in users
+            a(href=`/chat/${user.room_chat_id}`) #{user.fullName}
+          
