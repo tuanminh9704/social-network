@@ -5,6 +5,13 @@ const chatSchema = new mongoose.Schema(
         user_id: String,
         room_chat_id: String,
         content: String,
+        like: Number,
+        // comment: [
+        //     {
+        //         user_id: String,
+        //         content: Array,
+        //     }
+        // ],
         images: Array,
         deleted: {
             type: Boolean,
