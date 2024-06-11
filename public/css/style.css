@@ -253,10 +253,12 @@
   max-height: 550px; /* Adjust the height as needed */
   overflow-y: auto;
   border: 2px solid #dddd;
+  height: 550px;
 }
 
-.inner-list-chat div {
+.inner-list-chat a {
   padding: 10px;
+  display: block;
   font-weight: 600;
   font-size: 18px;
   border-bottom: 2px solid #dddd;

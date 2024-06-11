@@ -5,21 +5,8 @@ block main
     .row
       .col-2
         .inner-list-chat 
-          div() tuan minh
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
-          div() nguyen van a
+          each user in users
+            a(href=`/chat/${user.room_chat_id}`) #{user.fullName}
           
       .col-10
         .chat(my-id=user.id)

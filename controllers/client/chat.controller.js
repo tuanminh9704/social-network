@@ -45,10 +45,28 @@ module.exports.index = async (req, res) => {
       }).select("fullName");
       chat.infoUser = infoUser;
     }
-    // console.log(chats);
+
+    // Lấy ra danh sachs phòng chat
+    const friendsList = res.locals.user.friendList.map(user => user.user_id);
+
+    const users = await User.find({
+      _id: {$in: friendsList},
+      status: "active",
+      deleted: false,
+    })
+
+    // console.log(users);
+
+    users.forEach((user) => {
+      const info = res.locals.user.friendList.find(userFriend => userFriend.user_id == user.id);
+      user.room_chat_id = info.room_chat_id;
+    });
+
+    // console.log(arrFriend);
     // Hết Lấy data từ database
     res.render("client/pages/chat/index", {
       pageTitle: "Chat",
-      chats: chats
+      chats: chats,
+      users: users,
     });
   };
