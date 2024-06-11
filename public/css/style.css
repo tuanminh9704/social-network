@@ -90,7 +90,7 @@
   /* chat */
 
 .chat {
-  margin-top: 40px;
+  /* margin-top: 40px; */
   width: 100%;
   background-color: #E2E4EA;
   border: 2px solid #dddd;
@@ -247,6 +247,20 @@
 
 .chat .inner-body .inner-outgoing .inner-images img {
   margin: 0 0 5px 5px;
+}
+
+.inner-list-chat {
+  max-height: 550px; /* Adjust the height as needed */
+  overflow-y: auto;
+  border: 2px solid #dddd;
+}
+
+.inner-list-chat div {
+  padding: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 2px solid #dddd;
+  cursor: pointer;
 }
 /* End chat */
 
