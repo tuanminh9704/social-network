@@ -9,6 +9,39 @@ block main
         .inner-create-post 
           .inner-content Bạn đang nghĩ gì thế?
       .col-12.col-md-10.col-lg-8
+        form(
+          action=`/post/create`
+          id="form-create-post"
+          method="POST"
+          enctype="multipart/form-data"
+        )     
+          .inner-form-create-post(class="d-none")
+            span(class="button-close") X
+            div(class="form-group")
+            label(for="title") Tiêu đề
+            input(
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              required
+            )
+            div(class="form-group" upload-image)
+            label(for="thumbnail") Ảnh
+            input(
+              type="file"
+              class="form-control-file"
+              id="thumbnail"
+              name="thumbnail"
+              accept="image/*"
+              upload-image-input
+            )
+            img(
+              src=""
+              class="image-preview"
+              upload-image-preview
+            ) 
+      .col-12.col-md-10.col-lg-8
         .inner-posts-wrap.p-4.border.bg-light.rounded
           .inner-posts-head.mb-3
             .inner-title
@@ -47,6 +80,5 @@ block main
               span() Thích
             button(class="button-comment")
               i.fa-regular.fa-comment
-              span Comment
-        
+              span Comment  
 
