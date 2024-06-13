@@ -96,4 +96,4 @@ module.exports.index = async (req, res) => {
       chats: chats,
       users: users,
     });
-  };
+};

@@ -377,3 +377,61 @@
 
 /* End Button friend */
 
+
+/* Post */
+
+.inner-posts-wrap {
+  margin-bottom: 10px;
+}
+
+.inner-posts-head .inner-title {
+  display: flex;
+}
+
+.inner-posts-head .inner-title .inner-avatar img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.inner-posts-head .inner-title .inner-fullname {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.inner-posts-body {
+  margin-bottom: 10px;
+}
+
+.inner-posts-body .inner-image img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 5px;
+}
+
+.inner-posts-body .inner-posts-like {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #dddd;
+}
+
+.inner-button {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.inner-button .button-like {
+  border: 0;
+  width: 30%;
+  background-color: #F4F5F6;
+}
+
+.inner-button .button-comment {
+  border: 0;
+  width: 30%;
+  background-color: #F4F5F6;
+}
+
+
+
+/* End Post */
+
