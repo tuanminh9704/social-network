@@ -431,7 +431,23 @@
   background-color: #F4F5F6;
 }
 
+.inner-create-post {
+  margin-bottom: 20px;
+}
 
+.inner-create-post .inner-content:hover {
+  background-color: #E4E6E9;
+  border-radius: 12px;
+}
+
+.inner-create-post .inner-content{
+  width: 100%;
+  height: 40px;
+  background-color: #f0ececdd;
+  border-radius: 12px;
+  padding: 10px;
+  /* text-align: center; */
+}
 
 /* End Post */
 
