@@ -5,7 +5,7 @@ const postSchema = new mongoose.Schema(
     user_id: String,
     content: String,
     like: Number,
-    image: Array,
+    image: String,
     status: {
       type: String,
       default: "active"

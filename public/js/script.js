@@ -2,7 +2,7 @@
 // Hiển thị form tạo mới bài viết
 const innerContent = document.querySelector(".inner-content");
 
-console.log(innerContent);
+// console.log(innerContent);
 if(innerContent) {
     innerContent.addEventListener("click", () => {
         const innerFormCreatePost = document.querySelector(".inner-form-create-post");
@@ -14,6 +14,7 @@ if(innerContent) {
                 innerFormCreatePost.classList.add("d-none");
             })
         }
+
     })
 }
 
