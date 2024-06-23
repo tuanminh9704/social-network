@@ -55,10 +55,10 @@ block main
                 img(src=post.image)
               .inner-posts-like #{post.like}
             .inner-button 
-              button(class="button-like")
+              div(class="button-like" postId=post.id)
                 i.fa-regular.fa-thumbs-up
                 span() Thích
-              button(class="button-comment")
+              div(class="button-comment")
                 i.fa-regular.fa-comment
                 span Comment
     

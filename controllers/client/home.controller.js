@@ -25,3 +25,28 @@ module.exports.createPost = async (req, res) => {
     
     res.redirect("back");
 }
+
+//[PATCH] /post/like/:status/:postId
+module.exports.like = async (req, res) => {
+    const status = req.params.status;
+    const postId = req.params.postId;
+
+    const post = await Post.findOne({
+        _id: postId,
+        deleted: false,
+    })
+
+    const updateLike = status == "like" ? post.like + 1 : post.like - 1;
+
+    await Post.updateOne({
+        _id: postId,
+        deleted: false,
+      }, {
+        like: updateLike
+      });
+      res.json({
+        code: 200,
+        message: "Đã like",
+        like: updateLike
+      });
+}

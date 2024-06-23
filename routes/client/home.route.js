@@ -9,7 +9,9 @@ const controller = require("../../controllers/client/home.controller");
 
 router.get('/', controller.index);
 
-
 router.post('/post/create', upload.single("thumbnail"), uploadCloudMiddleware.uploadSingle, controller.createPost);
+
+router.patch('/post/like/:status/:postId', controller.like);
+
 
 module.exports = router;

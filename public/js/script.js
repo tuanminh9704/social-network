@@ -19,3 +19,31 @@ if(innerContent) {
 }
 
 // End Hiển thị form bài viết
+
+
+// Button Like
+
+const buttonLike = document.querySelectorAll(".button-like");
+
+if(buttonLike.length > 0){
+    buttonLike.forEach(button => {
+        button.addEventListener("click", () => {
+            const id = button.getAttribute("postId");
+            const status = button.classList.contains("active") ? "dislike" : "like";
+            // console.log(id);
+            // console.log(status);
+
+            fetch(`/post/like/${status}/${id}`, {
+                method: "PATCH"
+            })
+                .then(res => res.json()) 
+                .then(data => {
+                    if(data.code == 200) {
+                        console.log(data.like);
+                    }
+                }) 
+        })
+    })
+}
+
+// End Button Like
