@@ -39,7 +39,9 @@ if(buttonLike.length > 0){
                 .then(res => res.json()) 
                 .then(data => {
                     if(data.code == 200) {
-                        console.log(data.like);
+                        const innerLike = button.closest(".inner-posts-wrap").querySelector(".inner-posts-like");
+                        innerLike.innerHTML = data.like;
+                        button.classList.toggle("active");
                     }
                 }) 
         })

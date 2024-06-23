@@ -425,6 +425,12 @@
   background-color: #F4F5F6;
 }
 
+
+.button-like.active {
+  background-color: #007bff;
+  color: #ffff;
+}
+
 .inner-button .button-comment {
   border: 0;
   width: 30%;
