@@ -1,0 +1,25 @@
+extends ../../layouts/user.pug
+
+block main 
+  .container
+    //- Phần header
+    .header
+      .cover-photo(style="background-image: url('path/to/cover-photo.jpg')")
+      .profile-info
+        img.profile-pic(src="path/to/profile-pic.jpg" alt="Profile Picture")
+        h1.user-name Tên Người Dùng
+
+    //- Chia thành 2 cột
+    .row
+      .col-md-4
+        //- Thông tin cơ bản
+        h2 Thông tin cơ bản
+        p Quê quán: Hà Nội
+        p Số điện thoại: 0123456789
+        p Email: example@example.com
+      .col-md-8
+        //- Bài viết
+        h2 Bài viết
+        p Đây là nội dung bài viết của bạn. Bạn có thể thêm nhiều đoạn văn bản, hình ảnh hoặc bất kỳ nội dung nào khác vào đây.
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+        p Sed nisi. Nulla quis sem at nibh elementu
