@@ -524,3 +524,93 @@
 
 /* End Post */
 
+/* Profile */
+
+.header-profile {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  border: 1px solid #000;
+}
+
+.cover-photo {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.cover-photo img {
+  width: 100%;
+  height: auto;
+}
+
+.profile-info {
+  position: relative;
+  top: -100px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-info img.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.inner-about {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
+.inner-about h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.inner-about .inner-home-town {
+  font-weight: 600;
+  background-color: #dddd;
+  padding: 3px;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+
+.inner-about .inner-phone-number {
+  font-weight: 600;
+  background-color: #dddd;
+  padding: 3px;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+
+
+.inner-about .inner-email {
+  font-weight: 600;
+  background-color: #dddd;
+  padding: 3px;
+  border-radius: 9px;
+}
+
+
+.inner-body-post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+
+
+/* End profile */
