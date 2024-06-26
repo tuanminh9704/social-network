@@ -611,6 +611,14 @@
   overflow: hidden;
 }
 
+.inner-change-profile a {
+  color: #000;
+  background-color: #dddd;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
 
 
 /* End profile */

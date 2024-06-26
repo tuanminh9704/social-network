@@ -21,3 +21,7 @@ module.exports.index = async (req, res) => {
         posts: posts
     });
 }
+
+module.exports.changeMyProfile = (req, res) => {
+    res.send("OK");
+}
