@@ -5,7 +5,7 @@ const controller = require("../../controllers/client/my-user.controller.js");
 
 router.get('/:id', controller.index);
 
-router.get('/change/:id', controller.changeMyProfile);
+router.get('/edit/:id', controller.changeMyProfile);
 
 // router.patch('/change/:id', controller.changeMyProfilePatch);
 

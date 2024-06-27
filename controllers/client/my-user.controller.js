@@ -1,6 +1,7 @@
 const User = require("../../models/user.model");
 const Post = require("../../models/post.model");
 
+//[GET] /my-profile/:id
 module.exports.index = async (req, res) => {
     const myUserId = res.locals.user.id;
     // console.log(myUserId);
@@ -22,6 +23,15 @@ module.exports.index = async (req, res) => {
     });
 }
 
-module.exports.changeMyProfile = (req, res) => {
-    res.send("OK");
+//[GET /my-profile/edit/:id
+module.exports.changeMyProfile = async (req, res) => {
+    const myUserId = res.locals.user.id;
+    const myUser = await User.findOne({
+        _id: myUserId,
+        deleted: false,
+    })
+    res.render("client/pages/my-user/edit-profile", {
+        myUser: myUser,
+        pageTitle: "Chỉnh sửa trang cá nhân"
+    })
 }

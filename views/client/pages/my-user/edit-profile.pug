@@ -1,0 +1,72 @@
+extends ../../layouts/user.pug
+
+block main 
+  .container
+    .inner-wrap-edit-profile
+      form(
+        action=`/my-profile/edit/${user.id}?_method=PATCH`
+        id="form-edit-profile"
+        method="POST"
+        enctype="multipart/form-data"
+      )
+        div(class="form-group" upload-photo-cover)
+          label(for="cover-photo") Ảnh bìa
+            input(
+                type="file"
+                class="form-control-file"
+                id="thumbnail"
+                name="thumbnail"
+                accept="image/*"
+                upload-photo-input
+              )
+            img(
+              src=myUser.photoCover
+              class="image-preview"
+              upload-photo-cover-preview
+            ) 
+        div(class="form-group" upload-avatar)
+          label(for="avatar") Ảnh đại diện   
+            input(
+                type="file"
+                class="form-control-file"
+                id="thumbnail"
+                name="thumbnail"
+                accept="image/*"
+                upload-avatar-input
+              )
+            img(
+              src=myUser.avatar
+              class="image-preview"
+              upload-avatar-preview
+            )  
+        div(class="form-group")
+          label(for="home-town") Quê quán
+            input(
+              type="text"
+              class="form-control"
+              id="home-town"
+              name="home-town"
+              value=myUser.homeTown
+            ) 
+        div(class="form-group")
+          label(for="phone-number") Số điện thoại
+            input(
+              type="text"
+              class="form-control"
+              id="phone-number"
+              name="phone-number"
+              value=myUser.phone
+            ) 
+        div(class="form-group")
+          label(for="home-town") Email
+            input(
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              value=myUser.email
+            ) 
+        button(
+          type="submit"
+          class="btn btn-primary btn-block"
+        ) Cập nhật
