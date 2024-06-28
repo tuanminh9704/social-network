@@ -1,7 +1,9 @@
 extends ../../layouts/user.pug
 
 block main 
+
   .container
+    button.button-back(onclick="window.history.back()") Trở về
     .inner-wrap-edit-profile
       form(
         action=`/my-profile/edit/${user.id}?_method=PATCH`
