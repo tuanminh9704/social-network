@@ -39,18 +39,20 @@ module.exports.changeMyProfile = async (req, res) => {
 
 //[PATCH] /my-profile/edit/:id
 module.exports.changeMyProfilePatch = async (req, res) => {
-    // console.log(req.body.homeTown);
+    console.log(req.body);
+    // req.body.homeTown = 
     const avatarUpload = req.files['avatar'] ? req.files['avatar'][0] : null;
     const coverPhotoUpload = req.files['cover-photo'] ? req.files['cover-photo'][0] : null;
-    const avatarUrl = await uploadCloud(avatarUpload.buffer);
-    const coverPhotoUrl = await uploadCloud(coverPhotoUpload.buffer);    
-    // console.log(avatarUrl.url);
-    // console.log(coverPhotoUrl.url);
+    if(avatarUpload != null) {
+        const avatarUrl = await uploadCloud(avatarUpload.buffer);
+        req.body.avatar = avatarUrl.url;
+    }
+    if(coverPhotoUpload != null) {
+        const coverPhotoUrl = await uploadCloud(coverPhotoUpload.buffer);
+        req.body.photoCover = coverPhotoUrl.url;
+    }    
 
-    req.body.avatar = avatarUrl.url;
-    req.body.photoCover = coverPhotoUrl.url;
-
-    console.log(req.body);
+    // console.log(req.body);
     await User.updateOne({
         _id: res.locals.user.id,
     }, req.body);

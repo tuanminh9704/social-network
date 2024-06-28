@@ -5,10 +5,10 @@ block main
     //- Phần header
     .header-profile
       .cover-photo
-        img(src="https://giaydabongtot.com/wp-content/uploads/2020/10/Hinh-nen-ronaldo-cr7-may-tinh-laptop-2.jpg")
+        img(src=user.photoCover)
       .profile-info
-        img.avatar(src="https://assets.manutd.com/AssetPicker/images/0/0/10/126/687707/Legends-Profile_Cristiano-Ronaldo1523460877263.jpg" alt="avatar")
-        h1.user-name Tên Người Dùng
+        img.avatar(src=user.avatar alt="avatar")
+        h1.user-name #{user.fullName}
         .inner-change-profile
           a(href= `/my-profile/edit/${user.id}`) Chỉnh sửa trang cá nhân
     //- Chia thành 2 cột
@@ -18,11 +18,11 @@ block main
         .inner-about
           h2 GIới thiệu 
           .inner-home-town   
-              p Quê quán: Hà Nội
+              p Quê quán: #{user.homeTown}
           .inner-phone-number 
-              p Số điện thoại: 0123456789
+              p Số điện thoại: #{user.phone}
           .inner-email  
-              p Email: example@example.com
+              p Email: #{user.email}
       .col-8.post-profile
         each post in posts
           .inner-body-post
