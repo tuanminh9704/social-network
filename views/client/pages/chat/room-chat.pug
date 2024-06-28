@@ -6,5 +6,7 @@ block main
       .col-2
         .inner-list-chat 
           each user in users
-            a(href=`/chat/${user.room_chat_id}`) #{user.fullName}
+            div(class="room-chat-name")
+              img(src=user.avatar)
+              a(href=`/chat/${user.room_chat_id}`) #{user.fullName}
           
