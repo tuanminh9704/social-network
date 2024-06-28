@@ -1,5 +1,6 @@
 const User = require("../../models/user.model");
 const Post = require("../../models/post.model");
+const uploadCloud = require("../../helpers/uploadCloud");
 
 //[GET] /my-profile/:id
 module.exports.index = async (req, res) => {
@@ -34,4 +35,24 @@ module.exports.changeMyProfile = async (req, res) => {
         myUser: myUser,
         pageTitle: "Chỉnh sửa trang cá nhân"
     })
+}
+
+//[PATCH] /my-profile/edit/:id
+module.exports.changeMyProfilePatch = async (req, res) => {
+    // console.log(req.body.homeTown);
+    const avatarUpload = req.files['avatar'] ? req.files['avatar'][0] : null;
+    const coverPhotoUpload = req.files['cover-photo'] ? req.files['cover-photo'][0] : null;
+    const avatarUrl = await uploadCloud(avatarUpload.buffer);
+    const coverPhotoUrl = await uploadCloud(coverPhotoUpload.buffer);    
+    // console.log(avatarUrl.url);
+    // console.log(coverPhotoUrl.url);
+
+    req.body.avatar = avatarUrl.url;
+    req.body.photoCover = coverPhotoUrl.url;
+
+    console.log(req.body);
+    await User.updateOne({
+        _id: res.locals.user.id,
+    }, req.body);
+    res.redirect("back");
 }

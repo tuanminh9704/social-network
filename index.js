@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser"); // Để sử dụng req.body
+const methodOverride = require('method-override'); // ghi đè phương thức
 const flash = require("express-flash");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -15,6 +16,9 @@ const { Server } = require("socket.io");
 // Khởi tạo server Socket.IO
 const io = new Server(server);
 global._io = io;
+
+// Middleware method-override
+app.use(methodOverride('_method'));
 
 
 // ENV
