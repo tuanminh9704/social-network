@@ -1,0 +1,47 @@
+extends ../../layouts/user.pug
+
+block main 
+  .container
+    button.button-back(onclick="window.history.back()") Trở về
+    //- Phần header
+    .header-profile
+      .cover-photo
+        img(src=user.photoCover)
+      .profile-info
+        img.avatar(src=user.avatar alt="avatar")
+        h1.user-name #{user.fullName}
+    //- Chia thành 2 cột
+    .row
+      .col-md-4
+        //- Thông tin cơ bản
+        .inner-about
+          h2 GIới thiệu 
+          .inner-home-town   
+              p Quê quán: #{user.homeTown}
+          .inner-phone-number 
+              p Số điện thoại: #{user.phone}
+          .inner-email  
+              p Email: #{user.email}
+      .col-8.post-profile
+        each post in posts
+          .inner-body-post
+            .inner-posts-wrap.p-4.border
+              .inner-posts-head.mb-3
+                .inner-title
+                  .inner-avatar
+                    img(src=user.avatar, alt="Avatar")
+                  .inner-fullname #{myUser.fullName}
+                .inner-desc
+                  p.inner-content #{post.content}
+              .inner-posts-body 
+                .inner-image 
+                  img(src=post.image)
+                .inner-posts-like #{post.like}
+              .inner-button 
+                div(class="button-like")
+                  i.fa-regular.fa-thumbs-up
+                  span() Thích
+                div(class="button-comment")
+                  i.fa-regular.fa-comment
+                  span Comment
+          

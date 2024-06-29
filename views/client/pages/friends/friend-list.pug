@@ -16,7 +16,7 @@ block main
                   li 
                     button(class="refuse-friend") Hủy kết bạn
                   li 
-                    button(class="info") Trang cá nhân
+                    a(href=`/friends/profile/${user.id}` class="info") Trang cá nhân
                 span(userId=user.id)
                   i.fa-solid.fa-ellipsis-vertical.dots    
               div(class="inner-avatar")

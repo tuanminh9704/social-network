@@ -13,4 +13,6 @@ router.get("/lists", controller.friendList);
 
 router.get("/requests", controller.friendRequest);
 
+router.get("/profile/:id", controller.getProfile);
+
 module.exports = router;

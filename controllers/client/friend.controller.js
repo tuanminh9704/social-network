@@ -146,7 +146,7 @@ module.exports.accepts = async (req, res) => {
     })
 }
 
-//[GET] /friend/lists
+//[GET] /friends/lists
 module.exports.friendList = async (req, res) => {
     const userId = res.locals.user.id;
     const myUser = await User.findOne({
@@ -178,7 +178,7 @@ module.exports.friendList = async (req, res) => {
     })
 }
 
-//[GET] /friend/requests
+//[GET] /friends/requests
 module.exports.friendRequest = async (req, res) => {
     const myId = res.locals.user.id;
     // console.log(myId);
@@ -208,4 +208,9 @@ module.exports.friendRequest = async (req, res) => {
         pageTitle: "Lời mời kết bạn đã gửi",
         users: users
     })
+}
+
+//[GET] /friends/profile/:id
+module.exports.getProfile = (req, res) => {
+    res.send("OK");
 }
