@@ -1,12 +1,25 @@
 const Post = require("../../models/post.model");
 const uploadCloud = require("../../helpers/uploadCloud");
 const { unsubscribe } = require("../../routes/client/home.route");
+const User = require("../../models/user.model");
+const { friendList } = require("./friend.controller");
 
 module.exports.index = async (req, res) => {
     const posts = await Post.find();
+    const myUser = await User.findOne({
+        _id: res.locals.user.id
+    })
+
+    const arrayFriendList = [];
+    myUser.friendList.forEach(friend => {
+        // console.log(friend);
+        arrayFriendList.push(friend.user_id);
+    });
+    console.log(arrayFriendList);
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
-        posts: posts
+        posts: posts,
+        arrayFriendList: arrayFriendList,
     });
 }
 
