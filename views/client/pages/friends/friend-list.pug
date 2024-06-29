@@ -20,7 +20,7 @@ block main
                 span(userId=user.id)
                   i.fa-solid.fa-ellipsis-vertical.dots    
               div(class="inner-avatar")
-                img(src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg", alt="")
+                img(src=user.avatar, alt="")
               div(class="inner-info")
                 div(class="inner-fullname") #{user.fullName}
                 div(class="inner-buttons")

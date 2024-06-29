@@ -77,6 +77,7 @@ module.exports.registerPost = async (req, res) => {
         email: req.body.email,
         password: md5(req.body.password),
         tokenUser: tokenUser,
+        avatar: "https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
     }
 
     // console.log(infoUser);
