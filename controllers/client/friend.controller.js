@@ -1,5 +1,6 @@
 const User = require("../../models/user.model");
 const RoomChat = require("../../models/room-chats.model");
+const Post = require("../../models/post.model");
 
 //[GET] /friend
 module.exports.index = (req, res) => {
@@ -211,6 +212,21 @@ module.exports.friendRequest = async (req, res) => {
 }
 
 //[GET] /friends/profile/:id
-module.exports.getProfile = (req, res) => {
-    res.send("OK");
+module.exports.getProfile = async (req, res) => {
+    const userId = req.params.id;
+    // console.log(userId);
+    const user = await User.findOne({
+        _id: userId,
+    }).select("-friendList -password -tokenUser");
+
+    const posts = await Post.find({
+        user_id: userId,
+    })
+
+    // console.log(posts);
+    res.render("client/pages/friends/profile", {
+        pageTitle: user.fullName,
+        posts: posts,
+        user: user
+    })
 }
