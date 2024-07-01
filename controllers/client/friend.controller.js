@@ -173,6 +173,7 @@ module.exports.friendList = async (req, res) => {
     })
 
     // console.log(users);
+    // res.send("OK");
     res.render("client/pages/friends/friend-list", {
         users: users,
         pageTitle: "Danh sách bạn bè"

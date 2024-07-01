@@ -37,7 +37,7 @@ module.exports.index = async (req, res) => {
       socket.on("CLIENT_SEND_MESSAGE", async (data) => {
         const images = [];
         for (const image of data.images) {
-          console.log(image);
+          // console.log(image);
           const buffer = await uploadCloud(image)
           // console.log(buffer.url);
           images.push(buffer.url)

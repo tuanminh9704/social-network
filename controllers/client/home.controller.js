@@ -10,12 +10,22 @@ module.exports.index = async (req, res) => {
         _id: res.locals.user.id
     })
 
+    for (const post of posts) {
+        const user = await User.findOne({
+            _id: post.user_id,
+        })
+        // console.log(user);
+        post.author = user.fullName;
+        post.authorAvatar = user.avatar;
+    }
+
+
     const arrayFriendList = [];
     myUser.friendList.forEach(friend => {
         // console.log(friend);
         arrayFriendList.push(friend.user_id);
     });
-    console.log(arrayFriendList);
+    // console.log(arrayFriendList);
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         posts: posts,
