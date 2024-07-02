@@ -2,6 +2,7 @@ const User = require("../../models/user.model");
 const Chat = require("../../models/chat.model");
 
 const uploadCloud = require("../../helpers/uploadCloud");
+const RoomChat = require("../../models/room-chats.model");
 
 module.exports.roomChat = async (req, res) => {
   // Lấy ra danh sachs phòng chat
@@ -19,6 +20,7 @@ module.exports.roomChat = async (req, res) => {
     const info = res.locals.user.friendList.find(userFriend => userFriend.user_id == user.id);
     user.room_chat_id = info.room_chat_id;
   });
+
   res.render("client/pages/chat/room-chat", {
     users: users
   })
@@ -90,11 +92,48 @@ module.exports.index = async (req, res) => {
       user.room_chat_id = info.room_chat_id;
     });
 
+    const roomChat = await RoomChat.findOne({
+      _id: roomChatId,
+    })
+
+    // console.log(roomChat);
+    const arrUserIdInRoomChat = []
+    const userInRoomChat = roomChat.users;
+    userInRoomChat.forEach(user => {
+      // console.log(user);
+      if(user.user_id !== res.locals.user.id) {
+        arrUserIdInRoomChat.push(user.user_id);
+      }
+    })
+    // console.log(arrUserIdInRoomChat);
+
+    if(arrUserIdInRoomChat.length == 1){
+      const user = await User.findOne({
+        _id: arrUserIdInRoomChat[0],
+      })
+      // console.log(user);
+      roomChat.title = user.fullName;
+    }
+    else{
+      let stringNameRoomChat = "";
+      for (const id of arrUserIdInRoomChat) {
+        const user = await User.findOne({
+          _id: id
+        })
+        stringNameRoomChat += user.fullName;
+        stringNameRoomChat += ", "
+      }
+      stringNameRoomChat.slice(0, -1);
+      roomChat.title = stringNameRoomChat;
+    }
+
+
     // console.log(arrFriend);
     // Hết Lấy data từ database
     res.render("client/pages/chat/index", {
       pageTitle: "Chat",
       chats: chats,
       users: users,
+      roomChat: roomChat
     });
 };

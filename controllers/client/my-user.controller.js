@@ -39,7 +39,7 @@ module.exports.changeMyProfile = async (req, res) => {
 
 //[PATCH] /my-profile/edit/:id
 module.exports.changeMyProfilePatch = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // req.body.homeTown = 
     const avatarUpload = req.files['avatar'] ? req.files['avatar'][0] : null;
     const coverPhotoUpload = req.files['cover-photo'] ? req.files['cover-photo'][0] : null;
