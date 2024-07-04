@@ -54,15 +54,15 @@ if(buttonLike.length > 0){
 // Comment
 
 const commentInput = document.querySelector(".comment-input");
-if(commentInput) {
+
+if (commentInput) {
     const submitCommentButton = commentInput.querySelector("[button-submit-comment]");
     const postId = submitCommentButton.getAttribute("postId");
-    // console.log(submitCommentButton);   
 
     submitCommentButton.addEventListener("click", () => {
         const comment = document.getElementById("commentInput").value.trim();
-        
-        if(comment != ""){
+
+        if (comment !== "") {
             fetch(`/post/comment/${postId}`, {
                 method: "POST",
                 headers: {
@@ -70,7 +70,31 @@ if(commentInput) {
                 },
                 body: JSON.stringify({ comment })
             })
+            .then(res => res.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const commentSection = document.querySelector(".comments-section");
+                    const html = `
+                        <div class='inner-comment'>
+                            <div class='inner-avatar'>
+                                <img src='${data.data.avatar}' alt='Avatar'>
+                            </div>
+                            <div class='inner-content'>
+                                <div class='inner-fullname'>
+                                    <h3>${data.data.fullName}</h3>
+                                </div>
+                                <div class='inner-title'>
+                                    <p>${data.data.content}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    commentSection.insertAdjacentHTML("beforeend", html);
+                    document.getElementById("commentInput").value = "";
+                }
+            });
         }
-    })
+    });
 }
+
 // End Comment
