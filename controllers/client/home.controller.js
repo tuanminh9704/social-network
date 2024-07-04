@@ -76,5 +76,17 @@ module.exports.like = async (req, res) => {
 
 //[GET] /post/comment/:postId
 module.exports.getComment = async (req, res) => {
-    res.send("OK");
+    const postId = req.params.postId;
+    // console.log(postId);
+    const post = await Post.findOne({
+        _id: postId
+    })
+    const author = await User.findOne({
+        _id: post.user_id
+    })
+    res.render("client/pages/home/comment", {
+        post: post,
+        author: author,
+        pageTitle: "Comment"
+    })
 }

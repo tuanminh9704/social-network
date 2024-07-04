@@ -669,5 +669,29 @@
   border: 1px solid #0000;
 }
 
+.inner-header-post {
+  text-align: center;
+  border-bottom: 1px solid #dddd;
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+
+.inner-comment {
+  display: flex;
+}
+
+.inner-comment .inner-avatar img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+
+.inner-comment .inner-content .inner-fullname h3{
+  font-size: 16px;
+  font-weight: 600;
+}
+
 
 /* End Comment */
