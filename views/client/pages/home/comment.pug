@@ -21,22 +21,15 @@ block main
             .inner-posts-like Like: #{post.like}
           .comments-section-container
             .comments-section
-              .inner-comment
-                .inner-avatar
-                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
-                .inner-content
-                  .inner-fullname
-                    h3 Nguyễn Văn A
-                  .inner-title
-                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, totam. Nihil minus molestias provident libero qui ipsa earum fugit debitis tempora iste at similique, itaque aliquid consectetur eaque, voluptatum aperiam?
-              .inner-comment
-                .inner-avatar
-                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
-                .inner-content
-                  .inner-fullname
-                    h3 Nguyễn Văn A
-                  .inner-title
-                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit.          
+              each comment in comments
+                .inner-comment
+                  .inner-avatar
+                    img(src=comment.info.avatar, alt="Avatar")
+                  .inner-content
+                    .inner-fullname
+                      h3 #{comment.info.fullName}
+                    .inner-title
+                      p #{comment.content}
             .comment-input
               input(type="text" placeholder="Nhập bình luận của bạn..." id="commentInput")
               button(type="button" button-submit-comment postId=post.id) Gửi

@@ -82,12 +82,28 @@ module.exports.getComment = async (req, res) => {
     const post = await Post.findOne({
         _id: postId
     })
+    const arrayUserIdComment = [];
+    const comments = await Comment.find({
+        post_id: postId,
+    })
+   
+    for (const comment of comments) {
+        const userComment = await User.findOne({
+            _id: comment.user_id,
+        })
+        const info = {
+            fullName: userComment.fullName,
+            avatar: userComment.avatar,
+        }
+        comment.info = info;
+    }
     const author = await User.findOne({
         _id: post.user_id
     })
     res.render("client/pages/home/comment", {
         post: post,
         author: author,
+        comments: comments,
         pageTitle: "Comment"
     })
 }
