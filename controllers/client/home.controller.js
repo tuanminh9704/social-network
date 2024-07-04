@@ -10,12 +10,15 @@ module.exports.index = async (req, res) => {
     const myUser = await User.findOne({
         _id: res.locals.user.id
     })
-
     for (const post of posts) {
         const user = await User.findOne({
             _id: post.user_id,
         })
-        // console.log(user);
+        const comment = await Comment.find({
+            post_id: post._id,
+        })
+        post.commentTotal = comment.length;
+        // console.log(comment);
         post.author = user.fullName;
         post.authorAvatar = user.avatar;
     }

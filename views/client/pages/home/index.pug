@@ -54,7 +54,9 @@ block main
               .inner-posts-body 
                 .inner-image 
                   img(src=post.image)
-                .inner-posts-like Like: #{post.like}
+                .inner-total-interact  
+                  .inner-posts-like Like: #{post.like}
+                  .inner-posts-comment #{post.commentTotal} bình luận
               .inner-button 
                 div(class="button-like" postId=post.id)
                   i.fa-regular.fa-thumbs-up

@@ -417,6 +417,11 @@
 
 .inner-posts-body .inner-posts-like {
   margin-bottom: 10px;
+}
+
+.inner-posts-body .inner-total-interact {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid #dddd;
 }
 
