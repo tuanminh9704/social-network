@@ -1,7 +1,8 @@
 const Post = require("../../models/post.model");
+const User = require("../../models/user.model");
+const Comment = require("../../models/comment.model");
 const uploadCloud = require("../../helpers/uploadCloud");
 const { unsubscribe } = require("../../routes/client/home.route");
-const User = require("../../models/user.model");
 const { friendList } = require("./friend.controller");
 
 module.exports.index = async (req, res) => {
@@ -92,10 +93,34 @@ module.exports.getComment = async (req, res) => {
 }
 
 //[POST] /post/comment/:postId
-module.exports.createComment = (req, res) => {
-    const content = req.body;    
+module.exports.createComment = async (req, res) => {
+    const content = req.body.comment;    
     const postId = req.params.postId;
-    console.log(postId);
-    console.log(content);
-    console.log("OK")
+    const userId = res.locals.user.id;
+
+    const myuser = await User.findOne({
+        _id: userId,
+    })
+
+    const data = {
+        content: content,
+        postId: postId,
+        userId: userId,
+        avatar: myuser.avatar,
+        fullName: myuser.fullName
+    }
+
+    const comment = new Comment({
+        post_id: postId,
+        user_id: userId,
+        content: content
+    })
+    await comment.save();
+    
+    res.json({
+        code: 200,
+        message: "Comment thành công!",
+        data: data,
+    })
+    
 }

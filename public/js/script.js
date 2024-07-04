@@ -61,8 +61,6 @@ if(commentInput) {
 
     submitCommentButton.addEventListener("click", () => {
         const comment = document.getElementById("commentInput").value.trim();
-        console.log(postId);
-        console.log(comment);
         
         if(comment != ""){
             fetch(`/post/comment/${postId}`, {
