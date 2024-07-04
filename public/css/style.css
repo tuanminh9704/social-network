@@ -663,6 +663,13 @@
 
 /* Comment */
 
+.inner-header-post {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  font-weight: 1200;
+}
+
 .comments-section-container {
   position: relative;
   padding-bottom: 80px; /* Khoảng cách để chừa chỗ cho phần nhập bình luận */
@@ -709,7 +716,7 @@
   margin: 5px 0 0;
 }
 
-.comments-section .comment-input {
+.comment-input {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -722,7 +729,7 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.comments-section .comment-input input {
+ .comment-input input {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
@@ -730,7 +737,7 @@
   margin-right: 10px;
 }
 
-.comments-section .comment-input button {
+ .comment-input button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
