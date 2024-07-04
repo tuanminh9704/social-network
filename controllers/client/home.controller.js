@@ -73,3 +73,8 @@ module.exports.like = async (req, res) => {
         like: updateLike
       });
 }
+
+//[GET] /post/comment/:postId
+module.exports.getComment = async (req, res) => {
+    res.send("OK");
+}

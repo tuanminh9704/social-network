@@ -13,5 +13,7 @@ router.post('/post/create', upload.single("thumbnail"), uploadCloudMiddleware.up
 
 router.patch('/post/like/:status/:postId', controller.like);
 
+router.get("/post/comment/:postId", controller.getComment);
+
 
 module.exports = router;
