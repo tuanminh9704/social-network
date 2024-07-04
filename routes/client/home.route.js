@@ -15,7 +15,7 @@ router.patch('/post/like/:status/:postId', controller.like);
 
 router.get("/post/comment/:postId", controller.getComment);
 
-router.post("post/comment/:postId", controller.createComment);
+router.post("/post/comment/:postId", controller.createComment);
 
 
 module.exports = router;

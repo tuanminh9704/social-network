@@ -93,5 +93,9 @@ module.exports.getComment = async (req, res) => {
 
 //[POST] /post/comment/:postId
 module.exports.createComment = (req, res) => {
-    res.send("OK");
+    const content = req.body;    
+    const postId = req.params.postId;
+    console.log(postId);
+    console.log(content);
+    console.log("OK")
 }

@@ -49,3 +49,30 @@ if(buttonLike.length > 0){
 }
 
 // End Button Like
+
+
+// Comment
+
+const commentInput = document.querySelector(".comment-input");
+if(commentInput) {
+    const submitCommentButton = commentInput.querySelector("[button-submit-comment]");
+    const postId = submitCommentButton.getAttribute("postId");
+    // console.log(submitCommentButton);   
+
+    submitCommentButton.addEventListener("click", () => {
+        const comment = document.getElementById("commentInput").value.trim();
+        console.log(postId);
+        console.log(comment);
+        
+        if(comment != ""){
+            fetch(`/post/comment/${postId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ comment })
+            })
+        }
+    })
+}
+// End Comment
