@@ -663,15 +663,17 @@
 
 /* Comment */
 
-.inner-header-post {
-  font-weight: 1000;
-  border-bottom: 1px solid #dddd;
-  text-align: center;
-  margin-bottom: 10px;
+.comments-section-container {
+  position: relative;
+  padding-bottom: 80px; /* Khoảng cách để chừa chỗ cho phần nhập bình luận */
 }
 
+.comments-section {
+  max-height: 300px; /* Chiều cao tối đa cho phần bình luận */
+  overflow-y: auto; /* Thêm thanh cuộn dọc nếu nội dung vượt quá chiều cao này */
+}
 
-.inner-comment {
+.comments-section .inner-comment {
   display: flex;
   align-items: flex-start;
   padding: 10px;
@@ -682,24 +684,60 @@
   transition: height 0.3s ease;
   overflow: hidden; /* Đảm bảo rằng phần bình luận không vượt quá kích thước mong muốn */
 }
-.inner-comment .inner-avatar {
+
+.comments-section .inner-avatar {
   margin-right: 10px;
 }
-.inner-comment .inner-avatar img {
+
+.comments-section .inner-avatar img {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   object-fit: cover;
 }
-.inner-comment .inner-content {
+
+.comments-section .inner-content {
   flex: 1;
 }
-.inner-comment .inner-fullname h3 {
+
+.comments-section .inner-fullname h3 {
   margin: 0;
   font-size: 1.2em;
 }
-.inner-comment .inner-title p {
+
+.comments-section .inner-title p {
   margin: 5px 0 0;
 }
+
+.comments-section .comment-input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Chiều rộng bằng với .container */
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comments-section .comment-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.comments-section .comment-input button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}
+
 
 /* End Comment */

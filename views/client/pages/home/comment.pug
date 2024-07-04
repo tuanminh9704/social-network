@@ -8,37 +8,51 @@ block main
         .inner-posts-wrap.p-4.border.bg-light.rounded
           .inner-posts-head.mb-3
             .inner-header-post
-              h2 Bài viết của #{author.fullName} 
+              h2 Bài viết của #{author.fullName}
             .inner-title
               .inner-avatar
                 img(src=author.avatar, alt="Avatar")
               .inner-fullname #{author.fullName}
             .inner-desc
-                p.inner-content #{post.content}
-          .inner-posts-body 
-            .inner-image 
-                img(src=post.image)
+              p.inner-content #{post.content}
+          .inner-posts-body
+            .inner-image
+              img(src=post.image)
             .inner-posts-like #{post.like}
-          .inner-button 
-            div(class="button-like" postId=post.id)
-                i.fa-regular.fa-thumbs-up
-                span() Thích
-            a(class="button-comment" href=`/post/comment/${post.id}`)
-                i.fa-regular.fa-comment
-                span Comment
-          .inner-comment 
-            .inner-avatar 
-              img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp")  
-            .inner-content 
-              .inner-fullname 
-                h3 Nguyễn Văn A
-              .inner-title 
-                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, totam. Nihil minus molestias provident libero qui ipsa earum fugit debitis tempora iste at similique, itaque aliquid consectetur eaque, voluptatum aperiam?        
-          .inner-comment 
-            .inner-avatar 
-              img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp")  
-            .inner-content 
-              .inner-fullname 
-                h3 Nguyễn Văn A
-              .inner-title 
-                p Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          .comments-section-container
+            .comments-section
+              .inner-comment
+                .inner-avatar
+                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
+                .inner-content
+                  .inner-fullname
+                    h3 Nguyễn Văn A
+                  .inner-title
+                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, totam. Nihil minus molestias provident libero qui ipsa earum fugit debitis tempora iste at similique, itaque aliquid consectetur eaque, voluptatum aperiam?
+              .inner-comment
+                .inner-avatar
+                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
+                .inner-content
+                  .inner-fullname
+                    h3 Nguyễn Văn A
+                  .inner-title
+                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              .inner-comment
+                .inner-avatar
+                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
+                .inner-content
+                  .inner-fullname
+                    h3 Nguyễn Văn A
+                  .inner-title
+                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit.  
+              .inner-comment
+                .inner-avatar
+                  img(src="https://imagev3.vietnamplus.vn/w820/Uploaded/2024/mzdic/2024_06_23/ronaldo-2306-8285.jpg.webp", alt="Avatar")
+                .inner-content
+                  .inner-fullname
+                    h3 Nguyễn Văn A
+                  .inner-title
+                    p Lorem ipsum dolor sit amet consectetur, adipisicing elit.            
+            .comment-input
+              input(type="text" placeholder="Nhập bình luận của bạn...")
+              button(type="button") Gửi
