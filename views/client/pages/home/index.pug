@@ -46,7 +46,7 @@ block main
             .inner-posts-wrap.p-4.border.bg-light.rounded
               .inner-posts-head.mb-3
                 .inner-title
-                  .inner-avatar
+                  a(class="inner-avatar" href=`/friends/profile/${post.user_id}`)
                     img(src=post.authorAvatar, alt="Avatar")
                   .inner-fullname #{post.author}
                 .inner-desc
