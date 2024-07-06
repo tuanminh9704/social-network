@@ -22,7 +22,7 @@ block main
           | Theo dõi công việc mình giao
 
         //- Form giao việc mới
-        form.form-new-task(action="/tasks" method="post" class="task-mangement")
+        form.form-new-task(action="/tasks/create" method="post" class="task-mangement")
           .form-group
             label(for="title") Tiêu đề
             input#title.form-control(type="text" name="title" required)
@@ -45,8 +45,18 @@ block main
               option(value="in progress") Đang thực hiện
               option(value="completed") Hoàn thành
           .form-group
-            label(for="assignedTo") Người được giao
-            input#assignedTo.form-control(type="text" name="assignedTo")
+            label(for="assignedTo") Người thực hiện
+          //- Người thực hiện
+          .dropdown
+            button.btn.btn-secondary.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              | Chọn người thực hiện
+            .dropdown-menu(aria-labelledby="assignedTo")
+              each user in users
+                .dropdown-item
+                  label.form-check-label(for=`user-${user.id}`)
+                    input.form-check-input(type="checkbox" name="assignedTo[]" id=`user-${user.id}` value=user.id)
+                    | #{user.fullName}
+
           button.btn.btn-primary(type="submit") Thêm công việc
 
         //- Công việc bạn giao cho người khác
@@ -109,3 +119,4 @@ block main
                   button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
                   button.btn.btn-sm.btn-danger(type="button") Xóa
                   button.btn.btn-sm.btn-success(type="button") Hoàn thành
+

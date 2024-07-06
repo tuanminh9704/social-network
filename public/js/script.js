@@ -117,3 +117,27 @@ if(buttonTasks.length > 0) {
 
 
 // End Button Task
+
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const checkboxContainer = item.querySelector('.form-check-input');
+      checkboxContainer.checked = !checkboxContainer.checked;
+    });
+  });
+
+
+
+// Đảm bảo DOM đã được tải hoàn toàn
+document.addEventListener("DOMContentLoaded", function() {
+    // Lắng nghe sự kiện khi click vào một label
+    document.querySelectorAll('.dropdown-item label').forEach(function(label) {
+      label.addEventListener('click', function(e) {
+        e.stopPropagation(); // Ngăn chặn sự kiện click truyền xuống input
+        var checkbox = this.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+          checkbox.checked = !checkbox.checked; // Đảo trạng thái của checkbox khi click vào label
+        }
+      });
+    });
+  });
+  

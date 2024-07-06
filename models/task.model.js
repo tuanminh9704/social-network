@@ -5,6 +5,7 @@ const TaskSchema = new Schema({
       type: String,
       required: true,
     },
+    user_id: String,
     description: {
       type: String,
       required: false,

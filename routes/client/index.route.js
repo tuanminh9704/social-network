@@ -22,6 +22,6 @@ module.exports = (app) => {
 
     app.use('/my-profile', myUserRoutes);
 
-    app.use('/task', toDoRoutes);
+    app.use('/tasks', toDoRoutes);
 
 }

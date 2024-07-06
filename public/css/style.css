@@ -766,5 +766,32 @@
   display: block;
 }
 
+/* CSS để điều chỉnh dropdown menu */
+.form-group .dropdown-menu {
+  min-width: auto; /* Để menu rộng tự động */
+}
+
+.dropdown-item label {
+  display: flex; /* Sử dụng flexbox để các phần tử trong dropdown-item trở thành cùng một dòng */
+  align-items: center; /* Căn chỉnh các phần tử vào trung tâm theo chiều dọc */
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.dropdown-item label:hover {
+  background-color: #f8f9fa; /* Màu nền khi hover */
+}
+
+.dropdown-item input[type="checkbox"] {
+  margin-right: 0.5rem; /* Khoảng cách giữa checkbox và tên người thực hiện */
+}
+
+/* Ẩn dropdown menu khi chọn tên người thực hiện */
+.dropdown-menu.show {
+  display: block !important; /* Hiển thị dropdown menu */
+}
+
+
+
 
 /* End Task */
