@@ -753,3 +753,18 @@
 
 
 /* End Comment */
+
+
+/* Task */
+
+.task-mangement{
+  display: none;
+}
+
+/* Những class nào có thêm active thì hiển thị */
+.task-mangement.active{ 
+  display: block;
+}
+
+
+/* End Task */

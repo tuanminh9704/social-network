@@ -1,0 +1,111 @@
+extends ../../layouts/default.pug
+
+block main
+  .container.mt-5
+    .row
+      .col-12
+        h1 Quản lý công việc
+
+        //- Nút xem công việc được giao
+        button.btn-toggle-tasks.btn.btn-primary.mb-3(data-target=".assigned-tasks")
+          i.fas.fa-tasks.mr-2
+          | Công việc được giao
+
+        //- Nút giao việc cho người khác
+        button.btn-toggle-tasks.btn.btn-success.mb-3(data-target=".form-new-task")
+          i.fas.fa-user-plus.mr-2
+          | Giao việc cho người khác
+
+        //- Nút theo dõi công việc mình giao
+        button.btn-toggle-tasks.btn.btn-info.mb-3(data-target=".tracked-tasks")
+          i.fas.fa-user-check.mr-2
+          | Theo dõi công việc mình giao
+
+        //- Form giao việc mới
+        form.form-new-task(action="/tasks" method="post" class="task-mangement")
+          .form-group
+            label(for="title") Tiêu đề
+            input#title.form-control(type="text" name="title" required)
+          .form-group
+            label(for="description") Mô tả
+            textarea#description.form-control(name="description")
+          .form-group
+            label(for="dueDate") Ngày hết hạn
+            input#dueDate.form-control(type="date" name="dueDate")
+          .form-group
+            label(for="priority") Mức độ ưu tiên
+            select#priority.form-control(name="priority")
+              option(value="low") Thấp
+              option(value="medium" selected) Trung bình
+              option(value="high") Cao
+          .form-group
+            label(for="status") Trạng thái
+            select#status.form-control(name="status")
+              option(value="not started" selected) Chưa bắt đầu
+              option(value="in progress") Đang thực hiện
+              option(value="completed") Hoàn thành
+          .form-group
+            label(for="assignedTo") Người được giao
+            input#assignedTo.form-control(type="text" name="assignedTo")
+          button.btn.btn-primary(type="submit") Thêm công việc
+
+        //- Công việc bạn giao cho người khác
+        .card.assigned-tasks.mt-3(class="task-mangement")
+          .card-header
+            h2 Công việc bạn giao
+          .card-body
+            //- Công việc 1
+            .task.mb-3
+              .task-header.d-flex.justify-content-between.align-items-center
+                h3 Học bài tập lớn
+                span.badge.badge-primary Trung bình
+              .task-body
+                p Học và hoàn thành bài tập lớn môn Lập trình Web.
+                p Ngày hết hạn: 15/07/2024
+                p Trạng thái: 
+                  span.badge.badge-info Đang thực hiện
+                p Người được giao: Nguyễn Văn A
+                //- Các nút quản lý công việc
+                .task-actions.mt-3
+                  button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
+                  button.btn.btn-sm.btn-danger(type="button") Xóa
+                  button.btn.btn-sm.btn-success(type="button") Hoàn thành
+
+            //- Công việc 2
+            .task.mb-3
+              .task-header.d-flex.justify-content-between.align-items-center
+                h3 Chuẩn bị buổi thuyết trình
+                span.badge.badge-primary Trung bình
+              .task-body
+                p Chuẩn bị nội dung và slide cho buổi thuyết trình.
+                p Ngày hết hạn: 20/07/2024
+                p Trạng thái: 
+                  span.badge.badge-secondary Chưa bắt đầu
+                p Người được giao: Trần Thị B
+                //- Các nút quản lý công việc
+                .task-actions.mt-3
+                  button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
+                  button.btn.btn-sm.btn-danger(type="button") Xóa
+                  button.btn.btn-sm.btn-success(type="button") Hoàn thành
+
+        //- Công việc người khác giao cho bạn
+        .card.tracked-tasks.mt-3(class="task-mangement active")
+          .card-header
+            h2 Công việc bạn được giao
+          .card-body
+            //- Công việc 1
+            .task.mb-3
+              .task-header.d-flex.justify-content-between.align-items-center
+                h3 Học bài tập lớn
+                span.badge.badge-primary Trung bình
+              .task-body
+                p Học và hoàn thành bài tập lớn môn Lập trình Web.
+                p Ngày hết hạn: 15/07/2024
+                p Trạng thái: 
+                  span.badge.badge-info Đang thực hiện
+                p Người giao: Nguyễn Văn A
+                //- Các nút quản lý công việc
+                .task-actions.mt-3
+                  button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
+                  button.btn.btn-sm.btn-danger(type="button") Xóa
+                  button.btn.btn-sm.btn-success(type="button") Hoàn thành

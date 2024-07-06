@@ -1,3 +1,3 @@
 module.exports.index = (req, res) => {
-    res.send("OK");
+    res.render("client/pages/tasks/index");
 }
