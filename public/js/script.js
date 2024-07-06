@@ -98,3 +98,22 @@ if (commentInput) {
 }
 
 // End Comment
+
+
+// Button Task
+
+const buttonTasks = document.querySelectorAll(".btn-toggle-tasks");
+if(buttonTasks.length > 0) {
+    buttonTasks.forEach(button => {
+        button.addEventListener("click", () => {
+            const dataTarget = button.getAttribute("data-target");
+            document.querySelectorAll(".task-mangement").forEach(section => {
+                section.classList.remove("active");
+            })
+            document.querySelector(dataTarget).classList.add("active");
+        })
+    })
+}
+
+
+// End Button Task
