@@ -126,7 +126,7 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
   });
 
 
-
+// 
 // Đảm bảo DOM đã được tải hoàn toàn
 document.addEventListener("DOMContentLoaded", function() {
     // Lắng nghe sự kiện khi click vào một label

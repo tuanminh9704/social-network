@@ -1,6 +1,8 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 
 block main
+  +alert-success(5000)
   .container.mt-5
     .row
       .col-12
@@ -54,7 +56,7 @@ block main
               each user in users
                 .dropdown-item
                   label.form-check-label(for=`user-${user.id}`)
-                    input.form-check-input(type="checkbox" name="assignedTo[]" id=`user-${user.id}` value=user.id)
+                    input.form-check-input(type="checkbox" name="assignedTo" id=`user-${user.id}` value=user.id)
                     | #{user.fullName}
 
           button.btn.btn-primary(type="submit") Thêm công việc

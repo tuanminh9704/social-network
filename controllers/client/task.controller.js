@@ -1,4 +1,5 @@
 const User = require("../../models/user.model");
+const Task = require("../../models/task.model");
 
 //[GET] /task
 module.exports.index = async (req, res) => {
@@ -22,7 +23,11 @@ module.exports.index = async (req, res) => {
 
 
 //[POST] /task/create
-module.exports.createTaskPost = (req, res) => {
-    console.log(req.body);
-    res.send("OK");
+module.exports.createTaskPost = async (req, res) => {
+    // console.log(req.body);
+    req.body.user_id = res.locals.user.id;
+    const task = new Task(req.body) ;
+    await task.save();
+    req.flash("success", "Giao việc thành công!");
+    res.redirect("back");
 }
