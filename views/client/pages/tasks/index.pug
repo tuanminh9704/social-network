@@ -61,8 +61,8 @@ block main
 
           button.btn.btn-primary(type="submit") Thêm công việc
 
-        //- Công việc bạn giao cho người khác
-        .card.assigned-tasks.mt-3(class="task-mangement")
+        //- Công việc của bạn
+        .card.assigned-tasks.mt-3(class="task-mangement active")
           .card-header
             h2 Công việc của tôi
           .card-body
@@ -76,7 +76,7 @@ block main
                 p Ngày hết hạn: 15/07/2024
                 p Trạng thái: 
                   span.badge.badge-info Đang thực hiện
-                p Người được giao: Nguyễn Văn A
+                p Người giao: Nguyễn Văn A
                 //- Các nút quản lý công việc
                 .task-actions.mt-3
                   button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
@@ -100,22 +100,23 @@ block main
                   button.btn.btn-sm.btn-danger(type="button") Xóa
                   button.btn.btn-sm.btn-success(type="button") Hoàn thành
 
-        //- Công việc người khác giao cho bạn
-        .card.tracked-tasks.mt-3(class="task-mangement active")
+        //- Công việc mình giao cho người khác
+        .card.tracked-tasks.mt-3(class="task-mangement")
           .card-header
             h2 Công việc tôi giao
           .card-body
             //- Công việc 1
-            .task.mb-3
-              .task-header.d-flex.justify-content-between.align-items-center
-                h3 Học bài tập lớn
-                span.badge.badge-primary Trung bình
-              .task-body
-                p Học và hoàn thành bài tập lớn môn Lập trình Web.
-                p Ngày hết hạn: 15/07/2024
-                p Trạng thái: 
-                  span.badge.badge-info Đang thực hiện
-                p Người giao: Nguyễn Văn A
+            each taskAssignment in tasksAssignment
+              .task.mb-3
+                .task-header.d-flex.justify-content-between.align-items-center
+                  h3 #{taskAssignment.title}
+                  span.badge.badge-primary Trung bình
+                .task-body
+                  p #{taskAssignment.description}
+                  p Ngày hết hạn: #{taskAssignment.newTime}
+                  p Trạng thái: 
+                    span.badge.badge-info #{taskAssignment.status}
+                  p Người được giao: #{taskAssignment.info}
                 //- Các nút quản lý công việc
                 .task-actions.mt-3
                   button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
