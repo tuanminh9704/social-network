@@ -10,6 +10,10 @@ const taskSchema = new mongoose.Schema({
       type: String,
       required: false,
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+    },
     dueDate: {  //Ngày hết hạn
       type: Date,
       required: false,

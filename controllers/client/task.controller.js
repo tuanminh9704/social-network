@@ -7,14 +7,15 @@ module.exports.index = async (req, res) => {
         _id: res.locals.user.id,
     })
     // console.log(myUser);
-    const users = [];
+    const users = []; // danh sách người  dùng hiển thị lên ô check box phần tạo mới công việc
     for (const friend of myUser.friendList) {
         const user = await User.findOne({
             _id: friend.user_id,
         })
         users.push(user);
-        
     }
+    // lấy ra công việc mình giao cho người khác
+    
     res.render("client/pages/tasks/index", {
         users: users,
         pageTitle: "Quản lý công việc"
