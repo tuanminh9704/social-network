@@ -33,7 +33,7 @@ module.exports.index = async (req, res) => {
     const fullName = res.locals.user.fullName;
     const roomChatId = req.params.roomChatId;
     // SocketIO
-    chatSocket(res, req);
+    chatSocket(req, res);
     // End SocketIO
     // Lấy data từ database
 

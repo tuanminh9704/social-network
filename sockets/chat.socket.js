@@ -1,6 +1,6 @@
 const Chat = require("../models/chat.model");
 
-module.exports = (res, req) => {
+module.exports = (req, res) => {
     const userId = res.locals.user.id;
     const roomChatId = req.params.roomChatId;
     const fullName = res.locals.user.fullName;
