@@ -35,11 +35,26 @@ module.exports.index = async (req, res) => {
         })
         users.push(user);
     }
-    // lấy ra công việc mình giao cho người khác
+    // lấy ra công việc người khác giao cho mình
+
+    const myTasks = await Task.find({
+        assignedTo: {$in: res.locals.user.id}
+    });
+    for (const task of myTasks) {
+        const user = await User.findOne({
+            _id: task.user_id,
+        })
+        const newTime = momentHelper.convertTime(task.dueDate);
+        task.newTime = newTime;
+        task.info = user.fullName;
+    }
+    // const 
+    // End lấy ra công việc người khác giao cho mình
     
     res.render("client/pages/tasks/index", {
         tasksAssignment: tasksAssignment,
         users: users,
+        myTasks: myTasks,
         pageTitle: "Quản lý công việc"
     });
 }
