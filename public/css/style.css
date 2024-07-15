@@ -792,6 +792,8 @@
 }
 
 
-
+.form-task-success {
+  display: inline;
+}
 
 /* End Task */

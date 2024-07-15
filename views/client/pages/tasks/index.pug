@@ -81,7 +81,6 @@ block main
                     p Người giao: #{task.info}
                     //- Các nút quản lý công việc
                     .task-actions.mt-3
-                      button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
                       button.btn.btn-sm.btn-danger(type="button") Xóa
                       button.btn.btn-sm.btn-success(type="button") Hoàn thành
               else  
@@ -97,7 +96,7 @@ block main
             each taskAssignment in tasksAssignment
               .task.mb-3
                 .task-header.d-flex.justify-content-between.align-items-center
-                  h3 #{taskAssignment.title}
+                  h3 #{taskAssignment.title} #{taskAssignment.status === 'completed' ? ' - Hoàn thành' : ''}
                   span.badge.badge-primary #{taskAssignment.priority}
                 .task-body
                   p #{taskAssignment.description}
@@ -109,5 +108,6 @@ block main
                 .task-actions.mt-3
                   button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
                   button.btn.btn-sm.btn-danger(type="button") Xóa
-                  button.btn.btn-sm.btn-success(type="button") Hoàn thành
+                  form(action=`/tasks/success/${taskAssignment.id}?_method=PATCH` method="POST" class="form-task-success")
+                    button.btn.btn-sm.btn-success(type="submit") Hoàn thành
 

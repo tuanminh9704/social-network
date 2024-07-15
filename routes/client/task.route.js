@@ -7,4 +7,6 @@ router.get("/", controller.index);
 
 router.post("/create", controller.createTaskPost);
 
+router.patch("/success/:id", controller.taskSuccess);
+
 module.exports = router;

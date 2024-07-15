@@ -2,7 +2,7 @@ const User = require("../../models/user.model");
 const Task = require("../../models/task.model");
 const momentHelper = require("../../helpers/moment");
 
-//[GET] /task
+//[GET] /tasks
 module.exports.index = async (req, res) => {
     const myUser = await User.findOne({
         _id: res.locals.user.id,
@@ -59,8 +59,7 @@ module.exports.index = async (req, res) => {
     });
 }
 
-
-//[POST] /task/create
+//[POST] /tasks/create
 module.exports.createTaskPost = async (req, res) => {
     // console.log(req.body);
     req.body.user_id = res.locals.user.id;
@@ -69,3 +68,12 @@ module.exports.createTaskPost = async (req, res) => {
     req.flash("success", "Giao việc thành công!");
     res.redirect("back");
 }
+
+//[PATCH] /tasks/success 
+module.exports.taskSuccess = async (req, res) => {
+    const taskId = req.params.id;
+    console.log(taskId);
+    await Task.updateOne({_id: taskId}, {status: "completed"});
+    req.flash("success", "Hoàn thành!");
+    res.redirect("back");
+}   
