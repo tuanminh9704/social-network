@@ -9,4 +9,8 @@ router.post("/create", controller.createTaskPost);
 
 router.patch("/success/:id", controller.taskSuccess);
 
+router.delete("/delete/:id", controller.taskDelete);
+
+router.get("/edit/:id", controller.taskEdit);
+
 module.exports = router;

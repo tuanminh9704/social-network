@@ -1,0 +1,66 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  +alert-success(5000)
+  .container.mt-5
+    .row
+      .col-12
+        h1 Chỉnh sửa công việc tôi giao
+        form(
+            action=`/tasks/edit/${task.id}?_method=PATCH`
+            id="form-edit-task"
+            method="POST"
+            enctype="multipart/form-data"
+        )
+          div(class="form-group")
+            label(for="title") Tiêu đề
+            input(
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            value=task.title
+            required
+            )    
+          div(class="form-group")
+            label(for="desc") Mô tả
+            textarea(
+            class="form-control"
+            id="desc"
+            name="description"
+            rows="5"
+            textarea-mce
+          ) #{task.description}
+          div(class="form-group")
+            label(for="dueDate") Ngày hết hạn
+            input#dueDate.form-control(type="date" name="dueDate" value=task.newTime) 
+
+          div(class="form-group")
+            label(for="priority") Mức độ ưu tiên
+            select#priority.form-control(name="priority")  
+              option(value="low" selected=task.priority === 'low') Thấp
+              option(value="medium" selected=task.priority === 'medium') Trung bình
+              option(value="high" selected=task.priority === 'high') Cao 
+          div(class="form-group")
+            label(for="status") Trạng thái
+            select#status.form-control(name="status")
+              option(value="not started" selected=task.status === 'not started') Chưa bắt đầu
+              option(value="in progress" selected=task.status === 'in progress') Đang thực hiện
+              option(value="completed" selected=task.status === 'completed') Hoàn thành   
+          div(class="form-group")
+            label(for="assignedTo") 
+            .dropdown
+            button.btn.btn-secondary.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              | Chọn người thực hiện
+            .dropdown-menu(aria-labelledby="assignedTo")
+              each user in users
+                .dropdown-item
+                  label.form-check-label(for=`user-${user.id}`)
+                    input.form-check-input(type="checkbox" name="assignedTo" id=`user-${user.id}` value=user.id checked=task.assignedTo.includes(user.id))
+                    | #{user.fullName}
+          div(class="form-group")
+            button(
+            type="submit"
+            class="btn btn-primary"
+          ) Cập nhật

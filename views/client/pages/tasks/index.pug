@@ -106,8 +106,9 @@ block main
                   p Người được giao: #{taskAssignment.info}
                 //- Các nút quản lý công việc
                 .task-actions.mt-3
-                  button.btn.btn-sm.btn-info.mr-2(type="button") Chỉnh sửa
-                  button.btn.btn-sm.btn-danger(type="button") Xóa
-                  form(action=`/tasks/success/${taskAssignment.id}?_method=PATCH` method="POST" class="form-task-success")
+                  a(href=`/tasks/edit/${taskAssignment.id}`).btn.btn-sm.btn-info.mr-2() Chỉnh sửa
+                  form(action=`/tasks/delete/${taskAssignment.id}?_method=DELETE` method="POST" class="form-task form-task-delete")
+                    button.btn.btn-sm.btn-danger(type="submit") Xóa
+                  form(action=`/tasks/success/${taskAssignment.id}?_method=PATCH` method="POST" class="form-task form-task-success")
                     button.btn.btn-sm.btn-success(type="submit") Hoàn thành
 
