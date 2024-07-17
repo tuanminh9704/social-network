@@ -13,4 +13,6 @@ router.delete("/delete/:id", controller.taskDelete);
 
 router.get("/edit/:id", controller.taskEdit);
 
+router.patch("/edit/:id", controller.taskEditPatch);
+
 module.exports = router;

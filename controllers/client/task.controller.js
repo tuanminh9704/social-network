@@ -112,3 +112,15 @@ module.exports.taskEdit = async (req, res) => {
         users: users
     })
 }
+
+//[PATCH] /tasks/edit/:id
+module.exports.taskEditPatch = async (req, res) => {
+    const taskId = req.params.id
+    const task = await Task.findOne({
+        _id: taskId
+    })
+
+    await task.updateOne(req.body);
+    req.flash('success', "Chỉnh sửa công việc thành công!");
+    res.redirect("back");
+}
