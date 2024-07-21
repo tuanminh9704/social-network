@@ -1,0 +1,44 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  +alert-success(5000)
+  .container.mt-5
+    .row
+      .col-12
+        h1.weather-title.text-center Thời tiết
+    .row.mt-3
+      .col-lg-6.mb-4
+        .weather-current.card
+          .weather-current-header.card-header.bg-primary.text-white
+            h5.weather-current-title.card-title Vị trí hiện tại (Hà Nội)
+          .weather-current-body.card-body
+            .weather-info
+              i.fas.fa-thermometer-half
+              p.weather-current-text
+                | Nhiệt độ: 30°C
+            .weather-info
+              i.fas.fa-tint
+              p.weather-current-text
+                | Độ ẩm: 70%
+            .weather-info
+              i.fas.fa-wind
+              p.weather-current-text
+                | Tốc độ gió: 15 km/h
+      .col-lg-6.mb-4
+        .weather-forecast.card
+          .weather-forecast-header.card-header.bg-primary.text-white
+            h5.weather-forecast-title.card-title Dự báo thời tiết
+          .weather-forecast-body.card-body
+            .weather-info
+              i.fas.fa-sun
+              p.weather-forecast-text
+                | Thứ Hai: 27°C, Nắng
+            .weather-info
+              i.fas.fa-cloud
+              p.weather-forecast-text
+                | Thứ Ba: 24°C, Có mây
+            .weather-info
+              i.fas.fa-cloud-rain
+              p.weather-forecast-text
+                | Thứ Tư: 26°C, Có mưa

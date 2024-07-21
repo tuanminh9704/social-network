@@ -797,3 +797,36 @@
 }
 
 /* End Task */
+
+
+/* Weather */
+
+.weather-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.weather-current, .weather-forecast {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.weather-current-header, .weather-forecast-header {
+  background-color: #007bff;
+  color: #fff;
+}
+.weather-current-body, .weather-forecast-body {
+  padding: 15px;
+}
+.weather-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.weather-info i {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #007bff;
+}
+.weather-current-text, .weather-forecast-text {
+  font-size: 1.2rem;
+}
+/* End Weather */

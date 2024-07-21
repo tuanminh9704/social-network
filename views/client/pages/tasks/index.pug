@@ -81,8 +81,10 @@ block main
                     p Người giao: #{task.info}
                     //- Các nút quản lý công việc
                     .task-actions.mt-3
-                      button.btn.btn-sm.btn-danger(type="button") Xóa
-                      button.btn.btn-sm.btn-success(type="button") Hoàn thành
+                      form(action=`/tasks/delete/${task.id}?_method=DELETE` method="POST" class="form-task form-task-delete")
+                        button.btn.btn-sm.btn-danger(type="submit") Xóa
+                      form(action=`/tasks/success/${task.id}?_method=PATCH` method="POST" class="form-task form-task-success")
+                        button.btn.btn-sm.btn-success(type="submit") Hoàn thành
               else  
                 h2 Bạn hiện chưa có công việc nào!
 

@@ -4,6 +4,7 @@ const userRoutes = require("./user.route");
 const friendRoutes = require("./friend.route");
 const myUserRoutes = require("./my-user.route");
 const toDoRoutes = require("./task.route");
+const wheatherRoutes = require("./wheathher.route");
 
 const middlewaresAuth = require("../../middlewares/client/auth.middleware");
 const middlewaresLogin = require("../../middlewares/client/login.middleware");
@@ -23,5 +24,7 @@ module.exports = (app) => {
     app.use('/my-profile', myUserRoutes);
 
     app.use('/tasks', toDoRoutes);
+
+    app.use('/weather', wheatherRoutes);
 
 }
