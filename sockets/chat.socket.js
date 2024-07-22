@@ -1,4 +1,5 @@
 const Chat = require("../models/chat.model");
+const uploadCloud = require("../helpers/uploadCloud");
 
 module.exports = (req, res) => {
     const userId = res.locals.user.id;
