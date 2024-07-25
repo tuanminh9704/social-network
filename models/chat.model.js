@@ -12,10 +12,8 @@ const chatSchema = new mongoose.Schema(
         //         content: Array,
         //     }
         // ],
-        coord: {
-            longitude: String,
-            latitude: String,
-        },
+        latitude: String,
+        longitude: String,
         images: Array,
         deleted: {
             type: Boolean,

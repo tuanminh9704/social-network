@@ -148,6 +148,49 @@
   color: #081C36;
 }
 
+/* Gửi vị trí */
+.chat .inner-outgoing .inner-tracks {
+  margin-left: auto;
+  text-align: right;
+  background: #E4EEFE;
+  color: #081C36
+}
+
+/* Căn chỉnh nội dung tin nhắn */
+.inner-content {
+  margin-bottom: 5px;
+}
+
+/* Định dạng liên kết bản đồ */
+
+.inner-tracks {
+  width: 200px;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.inner-tracks a {
+  display: block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Định dạng hình ảnh bản đồ */
+.inner-tracks img {
+  width: 200px;
+  /* display: flex; */
+  /* display: block; */
+  height: auto;
+  /* border-radius: 4px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+}
+
+/* End gửi vị trí */
+
 .chat .inner-foot {
   border-top: 1px solid #ddd;
   padding: 10px;

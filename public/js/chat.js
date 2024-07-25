@@ -1,3 +1,4 @@
+
 const upload = new FileUploadWithPreview.FileUploadWithPreview('upload-images', {
   multiple: true, 
   maxFileCount: 6 // số  ảnh tôi đa khi gửi đi
@@ -101,4 +102,45 @@ emojiPicker.addEventListener('emoji-click', event => {
 });
 
 // End Emoji
+
+
+// Gửi vị trí cho người khác
+
+const getCoord = () => {
+  if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+  }
+}
+
+const showPosition = (position) => {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  // console.log(lat, lon);
+
+  const confimSendLocation = confirm("Bạn muốn chia sẻ vị trí không?");
+  
+  // Client gửi lên server kinh độ vĩ độ
+  if(confimSendLocation){
+    socket.emit("CLIENT_SEND_LOCATION", {
+      lat: lat,
+      lon: lon
+    })
+    // client nhận lại kinh độ vĩ độ
+    socket.on("SERVER_RETURN_LOCATION", (data) => {
+      console.log(data);
+    })
+  }
+
+
+}
+
+const buttonLocationDot = document.querySelector(".button-location-dot");
+// console.log(buttonLocationDot);
+if(buttonLocationDot) {
+  buttonLocationDot.addEventListener("click", () => {
+    getCoord();
+    // console.log("OK");
+  })
+}
+
 

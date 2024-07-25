@@ -35,6 +35,31 @@ module.exports = (req, res) => {
             images: images
           });
         });
+        // Bắt sự kiện người dùng gửi kinh độ vĩ độ
+        socket.on("CLIENT_SEND_LOCATION", async (data) => {
+          // console.log(data);
+          // const coord = data;
+          const latitude = data.lat;
+          const longitude = data.lon;
+          // console.log(latitude);
+          // console.log(longitude);
+          // console.log(coord);
+          const chat = new Chat({
+            room_chat_id: roomChatId,
+            user_id: userId,
+            latitude: latitude,
+            longitude: longitude,
+          })
+
+          await chat.save();
+
+          // server gửi lại client kinh độ vĩ độ
+          _io.to(roomChatId).emit("SERVER_RETURN_LOCATION", {
+            userId: userId,
+            fullName: fullName,
+            roomChatId: roomChatId,
+          })
+        })
       });
       // End SocketIO
 }

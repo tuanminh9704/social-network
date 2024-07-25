@@ -7,4 +7,6 @@ router.get('/', controller.roomChat);
 
 router.get('/:roomChatId', controller.index);
 
+// router.get("/send-location/:roomChatId", controller.sendLocation);
+
 module.exports = router;

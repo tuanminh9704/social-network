@@ -16,19 +16,21 @@ block main
           .inner-body
             each chat in chats
               div(
-                class=(chat.user_id == user.id ? "inner-outgoing" : ".inner-incoming")
+                class=(chat.user_id == user.id ? "inner-outgoing" : "inner-incoming")
               )
                 if(chat.user_id != user.id)
                   .inner-name #{chat.infoUser.fullName}
                 if(chat.content)
                   .inner-content 
                     | #{chat.content}
+                if(chat.latitude && chat.longitude)
+                  .inner-tracks 
+                    a(href=`https://www.google.com/maps/dir/?api=1&destination=${chat.latitude},${chat.longitude}` target="_blank") Xem vị trí của #{chat.infoUser.fullName}
+                      img(src="https://cdn.tgdd.vn/Files/2020/11/10/1305861/googlemap_1280x720-800-resize.jpg", alt="")
                 if(chat.images)
                   .inner-images
                     each image in chat.images
                       img(src=image)
-                  .inner-tracks 
-                  a(href=`https://www.google.com/maps/dir/?api=1&destination=${20.9703489},${105.7949736}` target="blank") ví trí
           .inner-preview-images
             div(
               class="custom-file-container"

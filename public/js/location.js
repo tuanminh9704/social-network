@@ -1,11 +1,13 @@
 // Lấy ra kinh độ và vĩ độ
 const getLocation = () => {
     if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showWeather);
     }
 }
 
-const showPosition = (position) => {
+// End Lấy ra kinh độ và vĩ độ
+
+const showWeather = (position) => {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
@@ -44,4 +46,3 @@ buttonGetWheather.addEventListener("click", () => {
 })
 
 
-// Gửi vị trí cho người khác
