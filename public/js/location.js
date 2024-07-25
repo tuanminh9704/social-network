@@ -9,7 +9,7 @@ const showPosition = (position) => {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-    // console.log(lat, lon);
+    console.log(lat, lon);
 
     fetch(`/weather/check?lat=${lat}&lon=${lon}`)
         .then(response => response.json())
