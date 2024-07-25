@@ -127,10 +127,41 @@ const showPosition = (position) => {
     })
     // client nhận lại kinh độ vĩ độ
     socket.on("SERVER_RETURN_LOCATION", (data) => {
-      console.log(data);
-    })
-  }
+      const body = document.querySelector(".chat .inner-body");
+      const myId = document.querySelector("[my-id]").getAttribute("my-id");
+      // console.log(data);
+      const div = document.createElement("div");
+      let htmlLocation = "";
+      let htmlFullName = "";
+      if(data.latitude && data.longitude){
+        htmlLocation = `
+          <div class="inner-tracks">
+            <a href='https://www.google.com/maps/dir/?api=1&destination=${data.latitude},${data.longitude}' target="_blank">
+              <img src='https://cdn.tgdd.vn/Files/2020/11/10/1305861/googlemap_1280x720-800-resize.jpg' alt='Google Map Location'>
+            </a>
+          </div>`;
+    
+        // console.log(htmlLocation);
+      }
+      if(myId != data.userId) { 
+        div.classList.add("inner-incoming");
+        htmlFullName = `<div class="inner-name">${data.fullName}</div>`;
+      } else {
+        div.classList.add("inner-outgoing");
+      }
 
+      div.innerHTML = `
+      ${htmlFullName}
+      ${htmlLocation}
+    `;
+  
+    // console.log(div);
+  
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+    });
+    
+  }
 
 }
 

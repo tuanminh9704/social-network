@@ -58,6 +58,8 @@ module.exports = (req, res) => {
             userId: userId,
             fullName: fullName,
             roomChatId: roomChatId,
+            latitude: latitude,
+            longitude: longitude,
           })
         })
       });
