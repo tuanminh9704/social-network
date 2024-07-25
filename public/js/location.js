@@ -1,4 +1,4 @@
-
+// Lấy ra kinh độ và vĩ độ
 const getLocation = () => {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -9,7 +9,7 @@ const showPosition = (position) => {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-    console.log(lat, lon);
+    // console.log(lat, lon);
 
     fetch(`/weather/check?lat=${lat}&lon=${lon}`)
         .then(response => response.json())
@@ -32,9 +32,9 @@ const showPosition = (position) => {
                 weatherInfo.innerHTML = html;
             }
         })
-
 }
 
+// Xem thời tiết
 
 const buttonGetWheather = document.querySelector(".view-wheather");
 // console.log(buttonGetWheather);
@@ -42,3 +42,6 @@ buttonGetWheather.addEventListener("click", () => {
     getLocation();
     // console.log(getLocation());
 })
+
+
+// Gửi vị trí cho người khác
